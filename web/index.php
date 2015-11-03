@@ -11,7 +11,7 @@ elseif(strstr($_SERVER['SERVER_NAME'],'home.chronomedia.ca') != false || strstr(
 }
 	
 // Dev Confirguration
-if ($devIP != '127.0.0.1') {
+if ($devIP == '127.0.0.1' || $devIP == '192.168.56.2') {
 
 	defined('YII_DEBUG') or define('YII_DEBUG', true);
 	defined('YII_ENV') or define('YII_ENV', 'dev');
