@@ -1,10 +1,17 @@
 <?php
-
 // File name of Yii configuration
 $yiiConfigFiles = "web.php";
 
+$devIP = '127.0.0.1';
+if(strstr($_SERVER['SERVER_NAME'],'192.168.56.2') != false ) {
+	$devIP = '192.168.56.2';
+}
+elseif(strstr($_SERVER['SERVER_NAME'],'home.chronomedia.ca') != false || strstr($_SERVER['SERVER_NAME'],'localhost') != false || strstr($_SERVER['SERVER_NAME'],'laptop-rico') != false){
+	$devIP = '127.0.0.1';
+}
+	
 // Dev Confirguration
-if (strstr($_SERVER['SERVER_NAME'],'home.chronomedia.ca') != false || strstr($_SERVER['SERVER_NAME'],'localhost') != false || strstr($_SERVER['SERVER_NAME'],'laptop-rico') != false) {
+if ($devIP != '127.0.0.1') {
 
 	defined('YII_DEBUG') or define('YII_DEBUG', true);
 	defined('YII_ENV') or define('YII_ENV', 'dev');
