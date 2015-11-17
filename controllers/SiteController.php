@@ -91,4 +91,9 @@ class SiteController extends BaseController
     {
         return $this->render('about');
     }
+
+    public function actionCatalogo()
+    {
+    	return $this->render('catalogo');
+    }
 }

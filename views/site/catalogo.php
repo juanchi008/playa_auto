@@ -29,8 +29,8 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
         <div class="grid_5">
             <div class="img-wrap">
-                <img data-src="../../images/index-1_img01.jpg" class="img_1" src="../../images/preloader.gif" alt="Image 1"/>
-                <img data-src="../../images/index-1_img02.jpg" class="img_1" src="../../images/preloader.gif" alt="Image 2"/>
+                <img data-src="images/index-1_img01.jpg" class="img_1" src="images/preloader.gif" alt="Image 1"/>
+                <img data-src="images/index-1_img02.jpg" class="img_1" src="images/preloader.gif" alt="Image 2"/>
             </div>
             <div class="clearfix"></div>
         </div>
@@ -77,12 +77,12 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
             <div class="grid_6">
                 <div class="img-wrap">
-                    <img class="img_2" src="../../images/index-1_img03.jpg" alt="Image 3"/>
-                    <img class="img_2" src="../../images/index-1_img04.jpg" alt="Image 4"/>
-                    <img class="img_2" src="../../images/index-1_img05.jpg" alt="Image 5"/>
-                    <img class="img_2" src="../../images/index-1_img06.jpg" alt="Image 6"/>
-                    <img class="img_2" src="../../images/index-1_img07.jpg" alt="Image 7"/>
-                    <img class="img_2" src="../../images/index-1_img08.jpg" alt="Image 8"/>
+                    <img class="img_2" src="images/index-1_img03.jpg" alt="Image 3"/>
+                    <img class="img_2" src="images/index-1_img04.jpg" alt="Image 4"/>
+                    <img class="img_2" src="images/index-1_img05.jpg" alt="Image 5"/>
+                    <img class="img_2" src="images/index-1_img06.jpg" alt="Image 6"/>
+                    <img class="img_2" src="images/index-1_img07.jpg" alt="Image 7"/>
+                    <img class="img_2" src="images/index-1_img08.jpg" alt="Image 8"/>
                 </div>
                 <div class="clearfix"></div>
             </div>
