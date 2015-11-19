@@ -43,7 +43,7 @@ $this->title = 'My Yii Application';
                 <div class="icon_1"></div>
                 <h3 class="text_2 color_2 maxheight1"><a href="#">Vender</a></h3>
                 <p class="text_3 color_2 maxheight">
-                    Lorem ipsum dolor sit amettetur dipiscing elit. In mollis erat mattis
+                   Si quieres vender tu vehiculo, te proveeremos de la mejor forma de venta que podras encontrar en el mercado.
                 </p>
                 <a class="btn_2" href="#">Más Detalles</a></div>
         </div>
@@ -52,7 +52,7 @@ $this->title = 'My Yii Application';
                 <div class="icon_2"></div>
                 <h3 class="text_2 color_2 maxheight1"><a href="#">Comprar</a></h3>
                 <p class="text_3 color_2 maxheight">
-                    Dorem ipsum dolor sit amettetur dipiscing elit. In mollis erat mattis
+                    Ofrecemos los mejores autos con los precios mas bajos y accesibles.
                 </p>
                 <a class="btn_2" href="#">Más Detalles</a></div>
         </div>
@@ -61,7 +61,7 @@ $this->title = 'My Yii Application';
                 <div class="icon_3"></div>
                 <h3 class="text_2 color_2 maxheight1"><a href="#">Financiar</a></h3>
                 <p class="text_3 color_2 maxheight">
-                    Kerem ipsum dolor sit amettetur dipiscing elit. In mollis erat mattis
+                    Te ofrecemos la mejor financiacion, con las cuotas mas bajas.
                 </p>
                 <a class="btn_2" href="#">Más Detalles</a></div>
         </div>
@@ -95,10 +95,8 @@ $this->title = 'My Yii Application';
                         TemplateMonster.com.
                         <br/>
                         <br/>-->
-                        Vivamus at magna non nunc tristique rhoncus. Aliquam nibh ante, egestas id dictum a,
-                        commodo luctus libero. Praesent faucibus malesuada faucibus. Donec laoreet metus id
-                        laoreet malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-                        consectetur orci sed
+                         Conigliaro Automóviles es una empresa de compra y venta de vehículos situada en Avda. Mcal. López esq. Madame Lynch. Somos una de las empresas punteras del sector, donde nuestra experiencia y servicios nos avalan y nuestros clientes así lo confirman.
+Disponemos de una amplia flota de vehículos, así como de un servicio de mantenimiento, siempre a disposición del cliente. Nuestro servicio de atención al cliente está siempre disponible, ya que abrimos cada día del año de 08:00 a 20:00 horas.
                     </p>
                 </div>
             </div>
@@ -117,8 +115,8 @@ $this->title = 'My Yii Application';
                             con nosotros
                         </h3>
                         <p class="text_3">
-                            Morem ipsum dolor sit amettetur dipiscing elit. In mollis erat mattis neque facilisis,
-                            sit amet ultries wertolio dasererat rutru.
+                             Conigliaro Automóviles te ofrece un catalogo para que tu puedas elegir el vehiculo que mas te guste desde cualquier punto del pais.
+          
                         </p>
                         <a href="#" class="btn_2">Más Detalles</a>
                     </div>
@@ -133,11 +131,12 @@ $this->title = 'My Yii Application';
                         <div class="caption">
                             <h3 class="text_2 color_2">
                                 La mejor <br/>
-                                Calidad e Servicios
+                                Calidad y Servicios
                             </h3>
                             <p class="text_3">
-                                Lorem ipsum dolor sit amettetur dipiscing elit. In mollis erat mattis neque facilisis,
-                                sit amet ultries wertolio dasererat rutrum.
+                               Nos distingue ofrecer autos con estrictos programas de mantenimiento, lo cual nos hace la mejor opción a la hora de adquirir un auto.
+
+Acérquese a nosotros y con gusto le orientaremos.
                             </p>
                             <a href="#" class="btn_2">Más Detalles</a>
                         </div>
@@ -162,26 +161,16 @@ $this->title = 'My Yii Application';
                 <div id="owl">
                     <div class="item">
                         <p class="text_3">
-                            Vivamus at magna non nunc tristique rhoncus. Aliquam nibh ante, egestas id dictum a,
-                            commodo luctus libero. Praesent faucibus malesuada faucibus. Donec laoreet metus id
-                            laoreet malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-                            consectetur orci sed nulla facilisis consequat. Curabitur vel lorem sit amet nulla
-                            ullamcorper fermentum. In vitae varius augue, eu consectetur ligula. Etiam dui eros,
+                           Sin duda los precios mas accesibles del mercado. Con la mejor atencion y servicio.Altamente recomendado.
                             <br/>
-                            laoreet sit amet est vel, commodo venenatis eros. Fusce adipiscing quam id risus
-                            sagittis, non consequat lacus interdum.
+                        
                         </p>
                     </div>
                     <div class="item">
                         <p class="text_3">
-                            Vivamus at magna non nunc tristique rhoncus. Aliquam nibh ante, egestas id dictum a,
-                            commodo luctus libero. Praesent faucibus malesuada faucibus. Donec laoreet metus id
-                            laoreet malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-                            consectetur orci sed nulla facilisis consequat. Curabitur vel lorem sit amet nulla
-                            ullamcorper fermentum. In vitae varius augue, eu consectetur ligula. Etiam dui eros,
+                             Conigliaro tiene la mejor opcion en la financiaion de un vehiculo.Yo lo recomiendo.
                             <br/>
-                            laoreet sit amet est vel, commodo venenatis eros. Fusce adipiscing quam id risus
-                            sagittis, non consequat lacus interdum.
+                              Fue muy facil y rapido el proceso de transaccion. La mejor opcion en el mercado.
                         </p>
                     </div>
                 </div>

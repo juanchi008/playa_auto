@@ -7,129 +7,207 @@ use yii\helpers\Html;
 $this->title = 'About';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<!--========================================================
-                          CONTENT
-=========================================================-->
-<section id="content"><div class="ic">More Website Templates @ TemplateMonster.com - September08, 2014!</div>
-<div class="container">
-    <div class="row wrap_11 wrap_12">
-        <div class="grid_7">
-            <h2 class="header_2 indent_1">Quienes Somos?</h2>
-            <div class="box_4">
-                <p class="text_5">
-                    Vivamus at magna non nunc tristique rhoncus. Aliquam nibh ante, egestas id dictum a, commodo
-                    luctus libero. Praesent faucibus malesuada faucibus. Donec laoreet metus id laoreet
-                    malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam consectetur orci
-                    sed nulla facilisis consequat. Curabitur vel lorem sit amet nulla ullamcorper fermentum. In
-                    vitae varius augue, eu consectetur ligula. Etiam dui eros, laoreet sit amet est vel, commodo
-                    venenatis eros. Fusce adipiscing quam id risus sagittis.
-                </p>
-                
-            </div>
-        </div>
-        <div class="grid_5">
-            <div class="img-wrap">
-                <img data-src="images/index-1_img01.jpg" class="img_1" src="images/preloader.gif" alt="Image 1"/>
-                <img data-src="images/index-1_img02.jpg" class="img_1" src="images/preloader.gif" alt="Image 2"/>
-            </div>
-            <div class="clearfix"></div>
-        </div>
-    </div>
-</div>
-<div class="bg_1 wrap_13 wrap_10">
+ <!--========================================================
+                              CONTENT
+    =========================================================-->
+<div class="bg_1 wrap_16 wrap_10">
     <div class="container">
         <div class="row">
             <div class="grid_12">
-                <h2 class="header_2 indent_2">
-                    Nuestro Equipo
+                <h2 class="header_1 indent_2 color_3">
+                    Toda Clase de Modelos
                 </h2>
-            </div>
-        </div>
-        <div class="row">
-            <div class="grid_6">
-                <div class="box_4">
-                    <p class="text_5">
-                        Kivamus at magna non nunc tristique rhoncus. Aliquam nibh ante, egestas id
-                        dictum ai commodo luctus libero. Praesent faucibus malesuada faucibus. Donec laoreet
-                        metus
-                        id laoreet malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-                        consectetur orci sed nulla facilisis consequat. Curabitur vel lorem sit amet nulla
-                        ullamcorper fermentum. In vitae varius augue, eu consectetur
-                    </p>
-                    <div class="row">
-                        <div class="grid_2">
-                            <ul class="list_2 text_6">
-                                <li><a href="#">Jose Conigliaro</a></li>
-                                <li><a href="#">Cesar Conigliaro</a></li>
-                                <li><a href="#">Cinthia Conigliaro</a></li>
-                            </ul>
-                        </div>
-                        <div class="grid_2">
-                            <ul class="list_2 text_6">
-                                <li><a href="#">Juan Vera</a></li>
-                                <li><a href="#">Elias Frutos</a></li>
-                                <li><a href="#">Victor Almada</a></li>
-                            </ul>
+                <div id="owl_2">
+                    <div class="item">
+                        <div class="row">
+                            <div class="preffix_1 grid_10">
+                                <ul class="list_3">
+                                    <li><a href="#"><img src="../../images/index-1_img09.png" alt="Image 9"/></a></li>
+                                    <li><a href="#"><img src="../../images/index-1_img10.png" alt="Image 10"/></a></li>
+                                    <li><a href="#"><img src="../../images/index-1_img11.png" alt="Image 11"/></a></li>
+                                    <li><a href="#"><img src="../../images/index-1_img12.png" alt="Image 12"/></a></li>
+                                    <li><a href="#"><img src="../../images/index-1_img13.png" alt="Image 13"/></a></li>
+                                    <li><a href="#"><img src="../../images/index-1_img14.png" alt="Image 14"/></a></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                    
+                    <div class="item">
+                        <div class="row">
+                            <div class="preffix_1 grid_10">
+                                <ul class="list_3">
+                                    <li><a href="#"><img src="../../images/index-1_img09.png" alt="Image 9"/></a></li>
+                                    <li><a href="#"><img src="../../images/index-1_img10.png" alt="Image 10"/></a></li>
+                                    <li><a href="#"><img src="../../images/index-1_img11.png" alt="Image 11"/></a></li>
+                                    <li><a href="#"><img src="../../images/index-1_img12.png" alt="Image 12"/></a></li>
+                                    <li><a href="#"><img src="../../images/index-1_img13.png" alt="Image 13"/></a></li>
+                                    <li><a href="#"><img src="../../images/index-1_img14.png" alt="Image 14"/></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="grid_6">
-                <div class="img-wrap">
-                    <img class="img_2" src="images/index-1_img03.jpg" alt="Image 3"/>
-                    <img class="img_2" src="images/index-1_img04.jpg" alt="Image 4"/>
-                    <img class="img_2" src="images/index-1_img05.jpg" alt="Image 5"/>
-                    <img class="img_2" src="images/index-1_img06.jpg" alt="Image 6"/>
-                    <img class="img_2" src="images/index-1_img07.jpg" alt="Image 7"/>
-                    <img class="img_2" src="images/index-1_img08.jpg" alt="Image 8"/>
-                </div>
-                <div class="clearfix"></div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="container">
-    <div class="row wrap_14">
-        <div class="grid_12">
-            <h2 class="header_1 wrap_8 color_3">
-               Por que Nosotros?
-            </h2>
-        </div>
-    </div>
-    <div class="row wrap_15">
-        <div class="grid_4">
-            <div class="box_5" data-index="1">
-                <h3 class="text_2 color_2"><a href="#">Fertomino vert</a></h3>
-                <p class="text_3">
-                    Lorem ipsum dolor sit amettetur ing elit. In mollis erat mattis neque cilisis, sit amet
-                    ultries wertolio dasererat rutrum. In mollis erat mattis neque cilisis, sit amet ultries
-                    wertoliow
-                </p>
-            </div>
-        </div>
-        <div class="grid_4">
-            <div class="box_5" data-index="2">
-                <h3 class="text_2 color_2"><a href="#">Tertomino verto</a></h3>
-                <p class="text_3">
-                    Horem ipsum dolor sit amettetur ing elit. In mollis erat mattis neque cilisis, sit amet
-                    ultries wertolio dasererat rutrume. In mollis erat mattis neque cilisis, sit amet ultries
-                    wertolio
-                </p>
-            </div>
-        </div>
-        <div class="grid_4">
-            <div class="box_5" data-index="3">
-                <h3 class="text_2 color_2"><a href="#">Loertomino verter</a></h3>
-                <p class="text_3">
-                    Korem ipsum dolor sit amettetur ing elit. In mollis erat mattis neque cilisis, sit amet
-                    ultries wertolio dasererat rutrumwer. In mollis erat mattiseryol neque cilisis, sit amet
-                    ultries wertol
-                </p>
             </div>
         </div>
     </div>
 </div>
 
+<section id="content"><div class="ic">More Website Templates @ TemplateMonster.com - September08, 2014!</div>
+    <div class="container">
+        <div class="row wrap_11 wrap_20">
+            <div class="grid_12">
+                <div class="text_7 color_2">
+                	<form id="search" name="search" action="#">
+	                	Busqueda: 
+	                    <ul id="filters">
+	                        <li>
+	                        	<select id="brand">
+	                        		<option value="">---Marcas ---</option>
+	                        		<option value="BMW">BMW</option>
+	                        		<option value="Mercedez">Mercedez</option>
+	                        		<option value="Audi">Mercedez</option>
+	                        	</select>
+	                        </li>
+	                        <li>
+	                        	<select id="prices">
+	                        		<option value="">--- Precios---</option>
+	                        		<option value="5000">Menor a 5000</option>
+	                        		<option value="5000 - 10000">5000 $ -10000 $</option>
+	                        		<option value="10000 - 10000">10000 $ -20000 $</option>
+	                        		<option value="5000 - 10000">20000 $ - 30000 $</option>
+	                        		<option value="5000 - 10000">30000 $ - 40000 $</option>
+	                        		<option value="5000 - 10000">40000 $ - 50000 $</option>
+	                        		<option value="5000 - 10000">50000 $ - 60000 $</option>
+	                        		<option value="5000 - 10000">60000 $ - 70000 $</option>
+	                        		<option value="5000 - 10000">70000 $ - 80000 $</option>
+	                        		<option value="5000 - 10000">80000 $ - 90000 $</option>
+	                        		<option value="5000 - 10000">90000 $ - 100000 $</option>
+	                        		<option value="5000 - 10000">1000000 $ o mas </option>
+	                        	</select>
+	                        </li>
+	                        <li>
+	                        	<select id="recent">
+	                        		<option value="">--- Nuevos ---</option>
+	                        		<option value="asc">Ascendente</option>
+	                        		<option value="desc">Descendente</option>
+	                        	</select>
+	                        </li>
+	                        <li>
+	                        	<input type="submit" name="submit" value="search"
+	                        </li>
+	                    </ul>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bg_1 wrap_17">
+        <div class="container">
+            <div class="row">
+                <div class="grid_12">
+                    <div class="isotope row">
+                        <div class="element-item grid_4 c1">
+                            <div class="box_7">
+                                <div class="img-wrap">
+                                    <img src="../../images/index-2_img01.jpg" alt="Image 1"/>
+                                </div>
+                                <div class="caption">
+                                    <h3 class="text_2 color_2"><a href="#">Tertomino verto</a></h3>
+                                    <p class="text_3">
+                                        Horem ipsum dolor sit amettetur ing elit. In mollis erat mattis neque
+                                        cilisis, sit amet <br/>
+                                        ultries wertolio dasererat rutrume. In mollis erat mattis
+                                        neque cilisis, sit amet ultries
+                                    </p>
+                                    <a class="btn_2" href="#">Más Detalles</a></div>
+                                    <!-- <a class="btn_2" href="#">Reservar</a></div>-->
+                            </div>
+                        </div>
+                        <div class="element-item grid_4 c1">
+                            <div class="box_7">
+                                <div class="img-wrap">
+                                    <img src="../../images/index-2_img02.jpg" alt="Image 2"/>
+                                </div>
+                                <div class="caption">
+                                    <h3 class="text_2 color_2"><a href="#">Dertomino vertom</a></h3>
+                                    <p class="text_3">
+                                        Gorem ipsum dolor sit amettetur ing elit. In mollis erat mattis neque
+                                        cilisis, sit amet <br/>
+                                        ultries wertolio dasererat rutrume. In mollis erat mattis
+                                        neque cilisis, sit amet ultrie
+                                    </p>
+                                    <a class="btn_2" href="#">Más Detalles</a></div>
+                            </div>
+                        </div>
+                        <div class="element-item grid_4 c1">
+                            <div class="box_7">
+                                <div class="img-wrap">
+                                    <img src="../../images/index-2_img03.jpg" alt="Image 3"/>
+                                </div>
+                                <div class="caption">
+                                    <h3 class="text_2 color_2"><a href="#">Kertomino vertu</a></h3>
+                                    <p class="text_3">
+                                        Lorem ipsum dolor sit amettetur ing elit. In mollis erat mattis neque
+                                        cilisis, sit amet <br/>
+                                        ultries wertolio dasererat rutrume. In mollis erat mattis
+                                        neque cilisis, sit amet ultesas
+                                    </p>
+                                    <a class="btn_2" href="#">Más Detalles</a></div>
+                            </div>
+                        </div>
+                        <div class="element-item grid_4 c2">
+                            <div class="box_7">
+                                <div class="img-wrap">
+                                    <img src="../../images/index-2_img04.jpg" alt="Image 4"/>
+                                </div>
+                                <div class="caption">
+                                    <h3 class="text_2 color_2"><a href="#">Hertomino ertoq</a></h3>
+                                    <p class="text_3">
+                                        Horem ipsum dolor sit amettetur ing elit. In mollis erat mattis neque
+                                        cilisis, sit amet <br/>
+                                        ultries wertolio dasererat rutrume. In mollis erat mattis
+                                        neque cilisis, sit amet ultries
+                                    </p>
+                                    <a class="btn_2" href="#">Más Detalles</a></div>
+                            </div>
+                        </div>
+                        <div class="element-item grid_4 c2">
+                            <div class="box_7">
+                                <div class="img-wrap">
+                                    <img src="../../images/index-2_img05.jpg" alt="Image 5"/>
+                                </div>
+                                <div class="caption">
+                                    <h3 class="text_2 color_2"><a href="#">Tertomino verto</a></h3>
+                                    <p class="text_3">
+                                        Forem ipsum dolor sit amettetur ing elit. In mollis erat mattis neque
+                                        cilisis, sit amet <br/>
+                                        ultries wertolio dasererat rutrume. In mollis erat mattis
+                                        neque cilisis, sit amet ultries
+                                    </p>
+                                    <a class="btn_2" href="#">Más Detalles</a></div>
+                            </div>
+                        </div>
+                        <div class="element-item grid_4 c3">
+                            <div class="box_7">
+                                <div class="img-wrap">
+                                    <img src="../../images/index-2_img06.jpg" alt="Image 6"/>
+                                </div>
+                                <div class="caption">
+                                    <h3 class="text_2 color_2"><a href="#">Nertomino rtoas</a></h3>
+                                    <p class="text_3">
+                                        Korem ipsum dolor sit amettetur ing elit. In mollis erat mattis neque cilisis,
+                                        sit amet <br/>
+                                        ultries wertolio dasererat rutrume. In mollis erat mattis neque
+                                        cilisis, sit amet ultriede
+                                    </p>
+                                    <a class="btn_2" href="#">Más Detalles</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
 </section>
 </div>
