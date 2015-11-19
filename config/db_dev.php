@@ -2,8 +2,8 @@
  return [
 	 'class' => 'yii\db\Connection',
 	 'dsn' => 'pgsql:host='.$devIP.';dbname=playa_auto',
-	 'username' => 'playauser',
-	 'password' => 'playapass',
+	 'username' => 'root',
+	 'password' => 'hesoyam',
 	 'charset' => 'utf8',
 	 'schemaMap' => [
 		 'pgsql'=> [
@@ -13,3 +13,11 @@
  	 ], // PostgreSQL
  ];
  
+ /*
+
+	 'username' => 'playauser',
+	 'password' => 'playapass',
+	 
+	 'username' => 'root',
+	 'password' => 'hesoyam',
+*/

@@ -68,6 +68,19 @@ AppAsset::register($this);
                             </li>
                             <li><a href="<?php echo Yii::$app->homeUrl; ?>site/contact">Contactos</a></li>
                             <li><a href="#">Login</a></li>
+                            <li><a href="<?php echo Yii::$app->homeUrl; ?>site/catalogo">Administracion</a>
+                                <ul>
+                                    <li><a href="<?php echo Yii::$app->homeUrl; ?>admins">Admins/</a></li>
+                                    <li><a href="<?php echo Yii::$app->homeUrl; ?>autos">Autos/index</a>
+                                    <li><a href="<?php echo Yii::$app->homeUrl; ?>contratos">Contratos</a>
+                                    <li><a href="<?php echo Yii::$app->homeUrl; ?>estados">Estados</a>
+                                    <li><a href="<?php echo Yii::$app->homeUrl; ?>formsDatos">Forms Datos</a>
+                                    <li><a href="<?php echo Yii::$app->homeUrl; ?>paises">Paises</a>
+                                    <li><a href="<?php echo Yii::$app->homeUrl; ?>provincias">Provincias</a>
+                                    <li><a href="<?php echo Yii::$app->homeUrl; ?>usuarios">Usuarios</a>
+                                    <li><a href="<?php echo Yii::$app->homeUrl; ?>ventas">Ventas</a>
+                                </ul>
+                            <li>
                         </ul>
                     </nav>
                 </div>

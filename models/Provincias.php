@@ -1,0 +1,55 @@
+<?php
+
+namespace app\models;
+
+use Yii;
+
+/**
+ * This is the model class for table "provincias".
+ *
+ * @property integer $id
+ * @property string $nombre_provincia
+ *
+ * @property Usuarios[] $usuarios
+ */
+class Provincias extends \yii\db\ActiveRecord
+{
+    /**
+     * @inheritdoc
+     */
+    public static function tableName()
+    {
+        return 'provincias';
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function rules()
+    {
+        return [
+            [['nombre_provincia'], 'required'],
+            [['id'], 'integer'],
+            [['nombre_provincia'], 'string', 'max' => 50]
+        ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'id' => 'ID',
+            'nombre_provincia' => 'Nombre Provincia',
+        ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUsuarios()
+    {
+        return $this->hasMany(Usuarios::className(), ['id_provincia' => 'id']);
+    }
+}
