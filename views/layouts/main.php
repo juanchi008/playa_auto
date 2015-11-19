@@ -25,6 +25,8 @@ AppAsset::register($this);
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../css/camera.css"/>
     <link rel="stylesheet" href="../../css/owl.carousel.css"/>
+    <link rel="stylesheet" href="../../css/isotope.css"/>
+    <link rel="stylesheet" href="../../css/contact-form.css"/>
     
     <title><?= Html::encode($this->title) ?></title>
     
@@ -103,6 +105,9 @@ AppAsset::register($this);
     <!--<![endif]-->
     <script src="../../js/camera.js"></script>
     <script src="../../js/owl.carousel.js"></script>
+    <script src='../../js/isotope.min.js'></script>
+    <script src="js/jquery-migrate-1.2.1.js"></script>
+    <script src="js/jquery.equalheights.js"></script>
     <!--[if lt IE 9]>
     <div style=' clear: both; text-align:center; position: relative;'>
         <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
@@ -115,7 +120,7 @@ AppAsset::register($this);
     <link rel="stylesheet" type="text/css" media="screen" href="css/ie.css">
     <![endif]-->
     
-	<script src="/js/script.js"></script>
+	<script src="../../js/script.js"></script>
 </body>
 </html>
 <?php $this->endPage() ?>
