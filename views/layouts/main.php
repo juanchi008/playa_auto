@@ -119,8 +119,10 @@ AppAsset::register($this);
     <script src="../../js/camera.js"></script>
     <script src="../../js/owl.carousel.js"></script>
     <script src='../../js/isotope.min.js'></script>
-    <script src="js/jquery-migrate-1.2.1.js"></script>
-    <script src="js/jquery.equalheights.js"></script>
+    <script src="../../js/jquery-migrate-1.2.1.js"></script>
+    <script src="../../js/jquery.equalheights.js"></script>
+    <script src="../../js/modal.js"></script>
+    <script src="../../js/TMForm.js"></script>
     <!--[if lt IE 9]>
     <div style=' clear: both; text-align:center; position: relative;'>
         <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
