@@ -119,7 +119,6 @@ AppAsset::register($this);
     <script src="../../js/camera.js"></script>
     <script src="../../js/owl.carousel.js"></script>
     <script src='../../js/isotope.min.js'></script>
-    <script src="../../js/jquery-migrate-1.2.1.js"></script>
     <script src="../../js/jquery.equalheights.js"></script>
     <script src="../../js/modal.js"></script>
     <script src="../../js/TMForm.js"></script>
