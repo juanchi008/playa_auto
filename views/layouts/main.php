@@ -67,20 +67,36 @@ AppAsset::register($this);
                                 <a href="<?php echo Yii::$app->homeUrl; ?>site/about">Acerca</a>
                             </li>
                             <li><a href="<?php echo Yii::$app->homeUrl; ?>site/contact">Contactos</a></li>
-                            <li><a href="<?php echo Yii::$app->homeUrl; ?>site/login">Login</a></li>
-                            <li><a href="<?php echo Yii::$app->homeUrl; ?>site/catalogo">Administracion</a>
-                                <ul>
-                                    <li><a href="<?php echo Yii::$app->homeUrl; ?>admins">Admins/</a></li>
-                                    <li><a href="<?php echo Yii::$app->homeUrl; ?>autos">Autos/index</a>
-                                    <li><a href="<?php echo Yii::$app->homeUrl; ?>contratos">Contratos</a>
-                                    <li><a href="<?php echo Yii::$app->homeUrl; ?>estados">Estados</a>
-                                    <li><a href="<?php echo Yii::$app->homeUrl; ?>formsDatos">Forms Datos</a>
-                                    <li><a href="<?php echo Yii::$app->homeUrl; ?>paises">Paises</a>
-                                    <li><a href="<?php echo Yii::$app->homeUrl; ?>provincias">Provincias</a>
-                                    <li><a href="<?php echo Yii::$app->homeUrl; ?>usuarios">Usuarios</a>
-                                    <li><a href="<?php echo Yii::$app->homeUrl; ?>ventas">Ventas</a>
-                                </ul>
-                            <li>
+                            <?php 
+
+                            if(Yii::$app->user->isGuest ) {
+								?>
+	                            <li><a href="<?php echo Yii::$app->homeUrl; ?>site/login">Login</a></li>
+	                        	<?php 
+	                        }
+	                        else {
+								?>
+	                            <li><a id="logoutLink" href="#">Logout</a></li>
+	                            
+								<li><a href="#">Administracion</a>
+									<ul>
+									<li><a href="<?php echo Yii::$app->homeUrl; ?>admins">Admins/</a></li>
+									<li><a href="<?php echo Yii::$app->homeUrl; ?>autos">Autos/index</a>
+									<li><a href="<?php echo Yii::$app->homeUrl; ?>contratos">Contratos</a>
+									<li><a href="<?php echo Yii::$app->homeUrl; ?>estados">Estados</a>
+									<li><a href="<?php echo Yii::$app->homeUrl; ?>formsDatos">Forms Datos</a>
+									<li><a href="<?php echo Yii::$app->homeUrl; ?>paises">Paises</a>
+									<li><a href="<?php echo Yii::$app->homeUrl; ?>provincias">Provincias</a>
+									<li><a href="<?php echo Yii::$app->homeUrl; ?>usuarios">Usuarios</a>
+									<li><a href="<?php echo Yii::$app->homeUrl; ?>ventas">Ventas</a>
+									</ul>
+								<li>
+								<?php
+								//  'linkOptions' => ['data-method' => 'post']
+								// <li><form method="POST" action="<?php echo Yii::$app->homeUrl; site/logout"> <a href="#" data-method = "post">Logout</a></form></li>
+							}
+	                        ?>
+                            
                         </ul>
                     </nav>
                 </div>
@@ -91,6 +107,9 @@ AppAsset::register($this);
 
 <?php echo $content; ?>
 
+<form id="logoutForm" method="POST" action="<?php echo Yii::$app->homeUrl; ?>site/logout">
+	<input type="hidden" name="<?= Yii::$app->request->csrfParam; ?>" value="<?= Yii::$app->request->csrfToken; ?>" />
+</form>
 </div><!-- class="page" -->
 
 <!--========================================================
@@ -137,6 +156,14 @@ AppAsset::register($this);
     <![endif]-->
     
 	<script src="../../js/script.js"></script>
+	
+	<script language="javascript">
+		$(document).ready(function () {
+			$('#logoutLink').click(function() {
+				$('#logoutForm').submit();
+			});
+		});
+	</script>
 </body>
 </html>
 <?php $this->endPage() ?>

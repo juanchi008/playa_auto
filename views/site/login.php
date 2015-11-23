@@ -12,42 +12,60 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <!--========================================================
                               CONTENT
-    =========================================================-->
-<section id="content">
- <div class="site-login">
-    <h1><?= Html::encode($this->title) ?></h1>
+=========================================================-->
+	<section id="content">
 
-    <p>Ingrese su datos</p>
-
-    <?php $form = ActiveForm::begin([
-        'id' => 'login-form',
-        'options' => ['class' => 'form-horizontal'],
-        'fieldConfig' => [
-            'template' => "{label}\n<div class=\"col-lg-3\">{input}</div>\n<div class=\"col-lg-8\">{error}</div>",
-            'labelOptions' => ['class' => 'col-lg-1 control-label'],
-        ],
-    ]); ?>
-
-        <?= $form->field($model, 'username') ?>
-
-        <?= $form->field($model, 'password')->passwordInput() ?>
-
-        <?= $form->field($model, 'rememberMe')->checkbox([
-            'template' => "<div class=\"col-lg-offset-1 col-lg-3\">{input} {label}</div>\n<div class=\"col-lg-8\">{error}</div>",
-        ]) ?>
-
-        <div class="form-group">
-            <div class="col-lg-offset-1 col-lg-11">
-                <?= Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
+        <div class="container">
+            <div class="row wrap_11">
+                <div class="grid_12">
+                    <h2 class="header_2 indent_4"><?= Html::encode($this->title) ?></h2>
+                </div>
             </div>
         </div>
+        
+        <div class="container">
+            <div class="row">
 
-    <?php ActiveForm::end(); ?>
-	<!--  
-    <div class="col-lg-offset-1" style="color:#999;">
-        You may login with <strong>admin/admin</strong> or <strong>demo/demo</strong>.<br>
-        To modify the username/password, please check out the code <code>app\models\User::$users</code>.
-    </div>
-    -->
-</div>
-</section>
+                <div class="grid_7">
+                
+                    <div id="contact-form">
+
+					    <?php 
+					    $form = ActiveForm::begin([
+					        'id' => 'login-form',
+					        'options' => ['class' => 'form-horizontal'],
+							'method' => 'post',
+					        'fieldConfig' => [
+					            'template' => "{label}\n<div class=\"col-lg-3\">{input}</div>\n<div class=\"col-lg-8\">{error}</div>",
+					            'labelOptions' => ['class' => 'col-lg-1 control-label'],
+					        ],
+					    ]); ?>
+					    
+                            <fieldset style="border: 1px solid #cccccc; padding-top: 10px; padding-bottom: 20px;">
+                            
+                            	<legend style="margin-left: 15px;"><p class="text_7 color_6">Ingrese su datos</p></legend>
+                            	
+								<div class="grid_6">
+						        	<?= $form->field($model, 'username') ?>
+								</div>
+								
+								<div class="grid_6">
+						        	<?= $form->field($model, 'password')->passwordInput(['class' => 'message']) ?>
+								</div>
+								
+								<div class="grid_6">
+							        <?= $form->field($model, 'rememberMe')->checkbox() ?>
+								</div>
+								
+						        <div class="grid_6">
+                                    <a class="btn_3" href="#" data-type="submit" data-method="POST">Enviar</a>
+						            <?= Html::submitButton('Login', ['name' => 'login-button']) ?>
+						        </div>
+					
+                            </fieldset>
+					    <?php ActiveForm::end(); ?>
+    				</div>
+    			</div>
+    		</div>
+    	</div>
+	</section>

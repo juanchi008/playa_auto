@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     =========================================================-->
  	<section id="content">
    
-   		<div class="ic">More Website Templates @ TemplateMonster.com - September08, 2014!</div>
+   		<!-- <div class="ic">More Website Templates @ TemplateMonster.com - September08, 2014!</div> -->
         <div class="container">
             <div class="row wrap_11">
                 <div class="grid_12">
@@ -109,7 +109,6 @@ $this->params['breadcrumbs'][] = $this->title;
                                     <div class="btn-wrap">
                                         <a class="btn_3" href="#" data-type="reset">Limpiar</a>
                                         <a class="btn_3" href="#" data-type="submit">Enviar</a>
-                                        <input type="submit" name="submit" value="Send"/>
                                     </div>
                                 </fieldset>
                                 <div class="modal fade response-message">

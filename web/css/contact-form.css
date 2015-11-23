@@ -20,6 +20,10 @@
   width: 100%;
   margin-bottom: 39px;
 }
+#contact-form label.control-label {
+  margin-bottom: 0px;	
+  padding-bottom: 5px;
+}
 #contact-form fieldset {
   border: none;
 }
@@ -55,6 +59,7 @@
 }
 /* Contact Form Input 
 ========================================================*/
+#contact-form input[type='password'], 
 #contact-form input[type='text'] {
   width: 100%;
   background-color: #ffffff;

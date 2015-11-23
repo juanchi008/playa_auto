@@ -80,19 +80,19 @@ class AutosSearch extends Autos
     		$sort = $params['AutosSearch']['sort'];
     	$query->orderBy = ['fecha_registro' => $sort ];
     	
-    	$precioRange = '0-999999';
-    	/*
+    	$precioRange = '1-999999';
+    	
     	if( !empty($params['AutosSearch']['precioRange'])) {
     		$precioRange = explode('-', $params['AutosSearch']['precioRange']);
-    		$precioRange[0] = trim($precioRange[0] );
-    		$precioRange[1] = trim($precioRange[1] );
+    		$precioRange[0] = intval(trim($precioRange[0] ) );
+    		$precioRange[1] = intval(trim($precioRange[1] ) );
 
     		$query->andWhere("precio >= ".$precioRange[0] );
     		$query->andWhere("precio <= ".$precioRange[1] );
     	}
     		//Fn::PrintVar($query, 'query');
     		//exit;
-    		 */
+    		 
     	
     	return $dataProvider;
     }
