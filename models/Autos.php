@@ -96,4 +96,68 @@ class Autos extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Ventas::className(), ['id_auto' => 'id']);
     }
+
+    /**
+     * @return PHP_ARRAY_ASSOC
+     */
+    public static function getMarcasList($searchIndex = 'N/A') {
+        $arr = [
+	        'Audi'     		=> 'Audi', 
+	        'BMW'     		=> 'BMW', 
+	        'Honda'     	=> 'Honda', 
+	        'Mercedez'     	=> 'Mercedez', 
+	        'Nissan'     	=> 'Nissan', 
+	        'Toyota'     	=> 'Toyota', 
+	        'Volkswagen'    => 'Volkswagen', 
+	        'Volvo'    		=> 'Volvo', 
+        ];
+        if($searchIndex == 'N/A') 
+            return $arr;
+        elseif(is_null($searchIndex) )
+            return 'N/D';
+        else 
+            return $arr[$searchIndex];
+    }
+
+    /**
+     * @return PHP_ARRAY_ASSOC
+     */
+    public static function getPreciosList($searchIndex = 'N/A') {
+    	$arr = [
+	    	'0-5000'     		=> 'Menor a  5000',
+	    	'5000-10000'     	=> '   5.000 $ -  10.000 $',
+	    	'10000-20000'     	=> '  10.000 $ -  20.000 $',
+	    	'20000-30000'     	=> '  20.000 $ -  30.000 $',
+	    	'30000-40000'     	=> '  30.000 $ -  40.000 $',
+	    	'40000-50000'     	=> '  40.000 $ -  50.000 $',
+	    	'50000-60000'     	=> '  50.000 $ -  60.000 $',
+	    	'60000-70000'     	=> '  60.000 $ -  70.000 $',
+	    	'70000-80000'     	=> '  70.000 $ -  80.000 $',
+	    	'80000-90000'     	=> '  80.000 $ -  90.000 $',
+	    	'90000-100000'     	=> '  90.000 $ - 100.000 $',
+	    	'100000-1000000'    => '1000.000 $ o mas',
+    	];
+    	if($searchIndex == 'N/A')
+    		return $arr;
+    	elseif(is_null($searchIndex) )
+    	return 'N/D';
+    	else
+    		return $arr[$searchIndex];
+    }
+
+    /**
+     * @return PHP_ARRAY_ASSOC
+     */
+    public static function getNuevosList($searchIndex = 'N/A') {
+    	$arr = [
+    		'asc'	=> 'Ascendente',
+    		'desc'	=> 'Descendente',
+    	];
+    	if($searchIndex == 'N/A')
+    		return $arr;
+    	elseif(is_null($searchIndex) )
+    	return 'N/D';
+    	else
+    		return $arr[$searchIndex];
+    }
 }

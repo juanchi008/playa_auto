@@ -41,38 +41,83 @@ class AutosSearch extends Autos
      */
     public function search($params)
     {
-        $query = Autos::find();
-
-        $dataProvider = new ActiveDataProvider([
-            'query' => $query,
-        ]);
-
-        $this->load($params);
-
-        if (!$this->validate()) {
-            // uncomment the following line if you do not want to return any records when validation fails
-            // $query->where('0=1');
-            return $dataProvider;
-        }
-
-        $query->andFilterWhere([
-            'id' => $this->id,
-            'precio' => $this->precio,
-            'fecha_registro' => $this->fecha_registro,
-            'id_estado' => $this->id_estado,
-        ]);
-
-        $query->andFilterWhere(['like', 'marca', $this->marca])
-            ->andFilterWhere(['like', 'modelo', $this->modelo])
-            ->andFilterWhere(['like', 'ano', $this->ano])
-            ->andFilterWhere(['like', 'color', $this->color])
-            ->andFilterWhere(['like', 'no_motor', $this->no_motor])
-            ->andFilterWhere(['like', 'matricula_auto', $this->matricula_auto])
-            ->andFilterWhere(['like', 'no_chassis', $this->no_chassis])
-            ->andFilterWhere(['like', 'observaciones', $this->observaciones])
-            ->andFilterWhere(['like', 'kilometraje', $this->kilometraje])
-            ->andFilterWhere(['like', 'no_chapa', $this->no_chapa]);
-
-        return $dataProvider;
+    	$query = Autos::find();
+    
+    	$dataProvider = new ActiveDataProvider([
+    			'query' => $query,
+    			]);
+    
+    	$this->load($params);
+    
+    	if (!$this->validate()) {
+    		// uncomment the following line if you do not want to return any records when validation fails
+    		// $query->where('0=1');
+    		return $dataProvider;
+    	}
+    
+    	$query->andFilterWhere([
+    			'id' => $this->id,
+    			'precio' => $this->precio,
+    			'fecha_registro' => $this->fecha_registro,
+    			'id_estado' => $this->id_estado,
+    			]);
+    
+    	$query->andFilterWhere(['like', 'marca', $this->marca])
+    	->andFilterWhere(['like', 'modelo', $this->modelo])
+    	->andFilterWhere(['like', 'ano', $this->ano])
+    	->andFilterWhere(['like', 'color', $this->color])
+    	->andFilterWhere(['like', 'no_motor', $this->no_motor])
+    	->andFilterWhere(['like', 'matricula_auto', $this->matricula_auto])
+    	->andFilterWhere(['like', 'no_chassis', $this->no_chassis])
+    	->andFilterWhere(['like', 'observaciones', $this->observaciones])
+    	->andFilterWhere(['like', 'kilometraje', $this->kilometraje])
+    	->andFilterWhere(['like', 'no_chapa', $this->no_chapa]);
+    
+    	return $dataProvider;
     }
+
+    /**
+     * Creates AJAX data provider instance with search query applied
+     *
+     * @param array $params
+     *
+     * @return ActiveDataProvider
+     */
+    public function searchAjax($params)
+    {
+    	$query = Autos::find();
+    
+    	$dataProvider = new ActiveDataProvider([
+    			'query' => $query,
+    			]);
+    
+    	$this->load($params);
+    
+    	if (!$this->validate()) {
+    		// uncomment the following line if you do not want to return any records when validation fails
+    		// $query->where('0=1');
+    		return $dataProvider;
+    	}
+    
+    	$query->andFilterWhere([
+    			'id' => $this->id,
+    			'precio' => $this->precio,
+    			'fecha_registro' => $this->fecha_registro,
+    			'id_estado' => $this->id_estado,
+    			]);
+    
+    	$query->andFilterWhere(['like', 'marca', $this->marca])
+    	->andFilterWhere(['like', 'modelo', $this->modelo])
+    	->andFilterWhere(['like', 'ano', $this->ano])
+    	->andFilterWhere(['like', 'color', $this->color])
+    	->andFilterWhere(['like', 'no_motor', $this->no_motor])
+    	->andFilterWhere(['like', 'matricula_auto', $this->matricula_auto])
+    	->andFilterWhere(['like', 'no_chassis', $this->no_chassis])
+    	->andFilterWhere(['like', 'observaciones', $this->observaciones])
+    	->andFilterWhere(['like', 'kilometraje', $this->kilometraje])
+    	->andFilterWhere(['like', 'no_chapa', $this->no_chapa]);
+    
+    	return $dataProvider;
+    }
+    
 }

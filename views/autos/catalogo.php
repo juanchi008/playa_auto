@@ -2,9 +2,9 @@
 
 /* @var $this yii\web\View */
 
+//use yii;
 use yii\helpers\Html;
-use yii;
-use app\components;
+use yii\bootstrap\ActiveForm;
 use app\components\Fn;
 
 $this->title = 'About';
@@ -60,7 +60,14 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="row wrap_11 wrap_20">
             <div class="grid_12">
                 <div class="text_7 color_2">
-                	<form id="search" name="search" action="#">
+<!--                 	<form id="search" name="search" action="#"> -->
+                    <?php $form = ActiveForm::begin([ 'id' => 'catalagoFilter', 'method' => 'get', 'action' => Yii::$app->request->url.'ajax',] ); 
+                    
+                    	echo $form->errorSummary($modelSearch); 
+                    	?>
+                    	
+                        <div class="contact-form-loader"></div>
+                    	
 	                	Busqueda: 
 	                    <ul id="filters">
 	                        <li>
@@ -97,9 +104,10 @@ $this->params['breadcrumbs'][] = $this->title;
 	                        </li>
 	                        <li>
 	                        	<input type="submit" name="submit" value="search"/>
+	                        	<div class="contact-form-loader"></div>
 	                        </li>
 	                    </ul>
-                    </form>
+                    <?php ActiveForm::end(); ?>
                 </div>
             </div>
         </div>

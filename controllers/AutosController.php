@@ -118,4 +118,25 @@ class AutosController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
+    public function actionCatalogo()
+    {
+    	$models = Autos::find()->all();
+    	$modelSearch = new AutosSearch();
+    	 
+    	return $this->render('catalogo', [
+	    	'models' => $models,
+	    	'modelSearch' => $modelSearch,
+	        'dataProvider' => $dataProvider,
+    	]);
+    }
+
+    public function actionCatalogoajax()
+    {
+    	// FORMAT_HTML , FORMAT_JSON , FORMAT_JSONP , FORMAT_RAW , FORMAT_XML
+    	Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+    	
+    	$searchModel = new AutosSearch();
+    	$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+    }
 }

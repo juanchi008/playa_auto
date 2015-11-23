@@ -4,9 +4,9 @@
 /* @var $content string */
 
 use yii\helpers\Html;
-use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
-use yii\widgets\Breadcrumbs;
+//use yii\bootstrap\Nav;
+//use yii\bootstrap\NavBar;
+//use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 
 AppAsset::register($this);
@@ -57,7 +57,7 @@ AppAsset::register($this);
                     <nav class="nav put-right">
                         <ul class="sf-menu">
                             <li class="current"><a href="<?php echo Yii::$app->homeUrl; ?>site/index">Inicio</a></li>
-                            <li><a href="<?php echo Yii::$app->homeUrl; ?>site/catalogo">Catálogo</a>
+                            <li><a href="<?php echo Yii::$app->homeUrl; ?>autos/catalogo">Catálogo</a>
                                 <ul>
                                     <li><a href="#">Modelo</a></li>
                                     <li><a href="#">Precio</a>
@@ -67,7 +67,7 @@ AppAsset::register($this);
                                 <a href="<?php echo Yii::$app->homeUrl; ?>site/about">Acerca</a>
                             </li>
                             <li><a href="<?php echo Yii::$app->homeUrl; ?>site/contact">Contactos</a></li>
-                            <li><a href="#">Login</a></li>
+                            <li><a href="<?php echo Yii::$app->homeUrl; ?>site/login">Login</a></li>
                             <li><a href="<?php echo Yii::$app->homeUrl; ?>site/catalogo">Administracion</a>
                                 <ul>
                                     <li><a href="<?php echo Yii::$app->homeUrl; ?>admins">Admins/</a></li>
@@ -90,6 +90,8 @@ AppAsset::register($this);
 </header>
 
 <?php echo $content; ?>
+
+</div><!-- class="page" -->
 
 <!--========================================================
                           FOOTER
