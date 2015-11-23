@@ -3,9 +3,13 @@
 /* @var $this yii\web\View */
 
 use yii\helpers\Html;
+use yii;
+use app\components;
+use app\components\Fn;
 
 $this->title = 'About';
 $this->params['breadcrumbs'][] = $this->title;
+///Fn::PrintVar($models, 'models');
 ?>
  <!--========================================================
                               CONTENT
@@ -106,6 +110,32 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="row">
                 <div class="grid_12">
                     <div class="isotope row">
+                    
+                    <?php 
+                    foreach($models as $model) {
+                    	?>
+                        <div class="element-item grid_4 c1">
+                            <div class="box_7">
+                                <div class="img-wrap">
+                                    <img src="../../images/index-2_img01.jpg" alt="Image 1"/>
+                                </div>
+                                <div class="caption">
+                                    <h3 class="text_2 color_2"><a href="#"><?php echo $model->marca.' - '.$model->modelo; ?></a></h3>
+                                    <p class="text_3">
+                                        <span style="font-weight: bold;">Ano:</span> <?php echo $model->ano; ?><br/>
+                                        <span style="font-weight: bold;">Color:</span> <?php echo $model->color; ?><br/>
+                                        <span style="font-weight: bold;">observaciones:</span> <?php echo $model->observaciones; ?><br/>
+                                        <span style="font-weight: bold;">kilometraje:</span> <?php echo $model->kilometraje; ?><br/>
+                                        <span style="font-weight: bold;">Precio:</span> <?php echo number_format($model->precio, 0, '.', '.'); ?> $
+                                    </p>
+                                    <a class="btn_2" href="#">Más Detalles</a></div>
+                                    <!-- <a class="btn_2" href="#">Reservar</a></div>-->
+                            </div>
+                        </div>
+                        <?php 
+                    }
+                    /*
+                    ?>
                         <div class="element-item grid_4 c1">
                             <div class="box_7">
                                 <div class="img-wrap">
@@ -203,6 +233,9 @@ $this->params['breadcrumbs'][] = $this->title;
                                     <a class="btn_2" href="#">Más Detalles</a></div>
                             </div>
                         </div>
+                        <?php 
+                        */
+                    	?>
                     </div>
                 </div>
             </div>

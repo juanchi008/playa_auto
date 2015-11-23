@@ -9,7 +9,7 @@ use yii\bootstrap\ActiveForm;
 use yii\captcha\Captcha;
 
 $this->title = 'Contact';
-$this->params['breadcrumbs'][] = $this->title;
+$this->params['breadcrumbs'][] = $this->title; 
 ?>
  <!--========================================================
                               CONTENT
@@ -58,16 +58,23 @@ $this->params['breadcrumbs'][] = $this->title;
                             <h2 class="header_2 indent_2">
                                 Contactenos
                             </h2>
-                            <form id="contact-form">
+                            <!-- <form id="contact-form" method="post" action="/site/contactajax"> -->
+                            <!-- <form id="contact-form"> -->
+                            <?php $form = ActiveForm::begin([
+                            		'id' => 'contact-form',
+                            		'action' => Yii::$app->request->url.'ajax',
+                            	  ]); ?>
                                 <div class="contact-form-loader"></div>
+                                <?php echo $form->errorSummary($model); ?>
                                 <fieldset>
                                     <div class="row">
                                         <div class="grid_2">
                                             <label class="name">
-                                                <input type="text" name="name" placeholder="Name:" value=""
+                                                <input type="text" name="name" placeholder="Nombre:" value=""
                                                        data-constraints="@Required @JustLetters"/>
                                                 <span class="empty-message">*Este Campo es requerido.</span>
-                                                <span class="error-message">*El nombre no es valido.</span>
+                                                <span class="error-message"><?php echo Html::error($model,'name'); ?>
+                                                </span>
                                             </label>
                                         </div>
                                         <div class="grid_2">
@@ -75,27 +82,38 @@ $this->params['breadcrumbs'][] = $this->title;
                                                 <input type="text" name="email" placeholder="E-mail:" value=""
                                                        data-constraints="@Required @Email"/>
                                                 <span class="empty-message">*Este Campo es requerido.</span>
-                                                <span class="error-message">*El nombre no es valido.</span>
+                                                <span class="error-message"><?php echo Html::error($model,'email'); ?>
+                                                </span>
                                             </label>
                                         </div>
                                         <div class="grid_2">
                                             <label class="phone">
-                                                <input type="text" name="phone" placeholder="Phone:" value=""
+                                                <input type="text" name="phone" placeholder="Telefono:" value=""
                                                        data-constraints="@JustNumbers"/>
                                                 <span class="empty-message">*Este Campo es requerido.</span>
-                                                <span class="error-message">*El nombre no es valido.</span>
+                                                <span class="error-message"><?php echo Html::error($model,'phone'); ?>
+                                                </span>
                                             </label>
                                         </div>
                                     </div>
                                     <label class="message">
-                                        <textarea name="message" placeholder="Message:"
+                                     <input type="text" name="subject" placeholder="Sujeto:" value=""
+                                     		data-constraints="@Required "/>
+                                     	<span class="empty-message">*Este Campo es requerido.</span>
+                                     	<span class="error-message"><?php echo Html::error($model,'subject'); ?>
+                                     	</span>
+                                    </label>
+                                    <label class="message">
+                                        <textarea name="body" placeholder="Mensaje"
                                                   data-constraints='@Required @Length(min=20,max=999999)'></textarea>
                                         <span class="empty-message">*Este Campo es requerido.</span>
-                                        <span class="error-message">*El nombre no es valido.</span>
+                                        <span class="error-message"><?php echo Html::error($model,'body'); ?>
+                                        </span>
                                     </label>
                                     <div class="btn-wrap">
                                         <a class="btn_3" href="#" data-type="reset">Limpiar</a>
                                         <a class="btn_3" href="#" data-type="submit">Enviar</a>
+                                        <input type="submit" name="submit"/>
                                     </div>
                                 </fieldset>
                                 <div class="modal fade response-message">
@@ -112,7 +130,8 @@ $this->params['breadcrumbs'][] = $this->title;
                                         </div>
                                     </div>
                                 </div>
-                            </form>
+                                <?php ActiveForm::end(); ?>
+                            <!-- </form> -->
                         </div>
                     </div>
                 </div>
@@ -121,3 +140,18 @@ $this->params['breadcrumbs'][] = $this->title;
        
     </section>
 </div>
+
+<?php 
+$jsParams = ['pageUrl' =>Yii::$app->request->url.'ajax'];
+$jsScript = <<<EOD
+$(document).ready(function () {
+	$('#contact-form').TMForm({
+		recaptchaPublicKey:'6LeZwukSAAAAAG8HbIAE0XeNvCon_cXThgu9afkj',	
+		mailHandlerURL:'{$jsParams['pageUrl']}'	
+	});
+});
+EOD;
+//$this->getView()->registerJs( $jsScript);
+$this->registerJs($jsScript);
+
+?>

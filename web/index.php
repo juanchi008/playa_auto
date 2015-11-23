@@ -6,7 +6,7 @@ $devIP = '127.0.0.1';
 if(strstr($_SERVER['SERVER_NAME'],'192.168.56.2') != false ) {
 	$devIP = '192.168.56.2';
 }
-elseif(strstr($_SERVER['SERVER_NAME'],'home.chronomedia.ca') != false || strstr($_SERVER['SERVER_NAME'],'localhost') != false || strstr($_SERVER['SERVER_NAME'],'laptop-rico') != false){
+elseif(strstr($_SERVER['SERVER_NAME'],'home.chronomedia.ca') != false || strstr($_SERVER['SERVER_NAME'],'cardealer.com') != false || strstr($_SERVER['SERVER_NAME'],'laptop-rico') != false){
 	$devIP = '127.0.0.1';
 }
 	

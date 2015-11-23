@@ -1,10 +1,11 @@
 //TMForm 1.0.1
+/*
 $(window).load(function(){
 	$('#contact-form').TMForm({
 		recaptchaPublicKey:'6LeZwukSAAAAAG8HbIAE0XeNvCon_cXThgu9afkj'		
 	})
 })
-
+*/
 ;(function($){
 	$.fn.TMForm=function(opt){
 		return this.each(TMForm)
@@ -168,6 +169,7 @@ $(window).load(function(){
 					form.addClass(opt.processingClass)
 					$this.ajaxSubmit(function(e,d,a,c){
 						responseMessage=e
+						
 						if(e=='success'){							
 							form
 								.removeClass(opt.processingClass)

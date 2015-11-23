@@ -1,8 +1,8 @@
 <?php
 
 return [
-	'adminEmail' => 'rico.dupuis@chronomedia.ca',
-	'returnEmail' => 'rico.dupuis@videotron.ca',
-	'signupEmail' => 'no-reply@chronomedia.ca',
-	'partnerEmail' => 'checkermate@hotmail.com',
+	'adminEmail' => 'juanchi_008manuel@hotmail.com',
+	'returnEmail' => 'juanchi_008manuel@hotmail.com',
+	'signupEmail' => 'rico.dupuis@chronomedia.ca',
+	'partnerEmail' => 'rico.dupuis@chronomedia.ca',
 ];
