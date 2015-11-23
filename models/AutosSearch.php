@@ -6,6 +6,7 @@ use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use app\models\Autos;
+use app\components\Fn;
 
 /**
  * AutosSearch represents the model behind the search form about `app\models\Autos`.
@@ -62,8 +63,8 @@ class AutosSearch extends Autos
     			'id_estado' => $this->id_estado,
     			]);
     
-    	$query->andFilterWhere(['like', 'marca', $this->marca])
-    	->andFilterWhere(['like', 'precio', $this->modelo])
+    	$query->andFilterWhere(['like', 'marca', $this->marca]);
+    	/*
     	->andFilterWhere(['like', 'modelo', $this->modelo])
     	->andFilterWhere(['like', 'ano', $this->ano])
     	->andFilterWhere(['like', 'color', $this->color])
@@ -72,9 +73,27 @@ class AutosSearch extends Autos
     	->andFilterWhere(['like', 'no_chassis', $this->no_chassis])
     	->andFilterWhere(['like', 'observaciones', $this->observaciones])
     	->andFilterWhere(['like', 'kilometraje', $this->kilometraje])
-    	->andFilterWhere(['like', 'no_chapa', $this->no_chapa])
-    	->orderBy = ['precio' => SORT_DESC];
-    
+    	->andFilterWhere(['like', 'no_chapa', $this->no_chapa]);
+    	*/
+		$sort = SORT_DESC;
+    	if( !empty($params['AutosSearch']['sort']))
+    		$sort = $params['AutosSearch']['sort'];
+    	$query->orderBy = ['fecha_registro' => $sort ];
+    	
+    	$precioRange = '0-999999';
+    	/*
+    	if( !empty($params['AutosSearch']['precioRange'])) {
+    		$precioRange = explode('-', $params['AutosSearch']['precioRange']);
+    		$precioRange[0] = trim($precioRange[0] );
+    		$precioRange[1] = trim($precioRange[1] );
+
+    		$query->andWhere("precio >= ".$precioRange[0] );
+    		$query->andWhere("precio <= ".$precioRange[1] );
+    	}
+    		//Fn::PrintVar($query, 'query');
+    		//exit;
+    		 */
+    	
     	return $dataProvider;
     }
 

@@ -83,20 +83,20 @@ $this->params['breadcrumbs'][] = $this->title;
 	                        	</select>
 	                        </li>
 	                        <li>
-	                        	<select id="precio" name="AutosSearch[precio]">
+	                        	<select id="precioRange" name="AutosSearch[precioRange]">
 	                        		<option value="">--- Precios---</option>
-	                        		<option value="5000">Menor a 5000</option>
+	                        		<option value="0 - 5000">Menor a 5000</option>
 	                        		<option value="5000 - 10000">5000 $ -10000 $</option>
-	                        		<option value="10000 - 10000">10000 $ -20000 $</option>
-	                        		<option value="5000 - 10000">20000 $ - 30000 $</option>
-	                        		<option value="5000 - 10000">30000 $ - 40000 $</option>
-	                        		<option value="5000 - 10000">40000 $ - 50000 $</option>
-	                        		<option value="5000 - 10000">50000 $ - 60000 $</option>
-	                        		<option value="5000 - 10000">60000 $ - 70000 $</option>
-	                        		<option value="5000 - 10000">70000 $ - 80000 $</option>
-	                        		<option value="5000 - 10000">80000 $ - 90000 $</option>
-	                        		<option value="5000 - 10000">90000 $ - 100000 $</option>
-	                        		<option value="5000 - 10000">1000000 $ o mas </option>
+	                        		<option value="10000 - 20000">10000 $ -20000 $</option>
+	                        		<option value="20000 - 30000">20000 $ - 30000 $</option>
+	                        		<option value="30000 - 40000">30000 $ - 40000 $</option>
+	                        		<option value="40000 - 50000">40000 $ - 50000 $</option>
+	                        		<option value="50000 - 60000">50000 $ - 60000 $</option>
+	                        		<option value="60000 - 70000">60000 $ - 70000 $</option>
+	                        		<option value="70000 - 80000">70000 $ - 80000 $</option>
+	                        		<option value="80000 - 90000">80000 $ - 90000 $</option>
+	                        		<option value="90000 - 100000">90000 $ - 100000 $</option>
+	                        		<option value="100000 - 1000000">1000000 $ o mas </option>
 	                        	</select>
 	                        </li>
 	                        <li>
