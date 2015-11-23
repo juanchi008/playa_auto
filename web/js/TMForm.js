@@ -26,6 +26,9 @@ $(window).load(function(){
 					,stripHTML:true
 					,recaptchaPublicKey:''
 					,capchaTheme:'clean'
+					,targetDivId:'ajaxContainer'
+					,responseType: 'text'
+					,method: 'POST'
 				},opt)
 				
 			init()
@@ -62,7 +65,7 @@ $(window).load(function(){
 						$(this).parents('label').next('label').find('input,textarea').focus()
 					})					
 					.attr({
-						method:'POST'
+						method: opt.method
 						,action:opt.mailHandlerURL
 					})
 				
@@ -150,6 +153,7 @@ $(window).load(function(){
 			}
 			
 			function formSubmit(){
+				
 				var $this=$(this)
 					,modal=$('.'+opt.responseMessageClass)
 					,responseMessage
@@ -170,36 +174,51 @@ $(window).load(function(){
 					$this.ajaxSubmit(function(e,d,a,c){
 						responseMessage=e
 						
-						if(e=='success'){							
+						if(opt.responseType == 'html') {
+							
+							targetElem = $('#' + opt.targetDivId);
+							if( !targetElem ) {
+								alert("Target output not found");
+							}
+							else {
+								targetElem.html(e);
+							}	
 							form
 								.removeClass(opt.processingClass)
-								.addClass(opt.successClass)
-
-							modal.find('.modal-title').text('Exito!')
-							modal.find('.modal-body').text('El mensaje fue enviado correctamente!')
-
-							setTimeout(function(){
-								form
-								.removeClass(opt.successClass)
-								.trigger('reset')
-							},opt.successShowDelay)
-						}else{							
-							modal.find('.modal-title').text('Error!')
-							modal.find('.modal-body').html(e)
-
-							form
-								.removeClass(opt.processingClass)
-								.addClass(opt.responseErrorClass)
-
-							$('#recaptcha_response_field',form).val('')
-
-							setTimeout(function(){
-								form
-									.removeClass(opt.responseErrorClass)
-									//.trigger('reset')								
-							},opt.successShowDelay)
 						}
-						modal.modal({keyboard:true})						
+						else {
+							
+							if(e=='success'){							
+								form
+									.removeClass(opt.processingClass)
+									.addClass(opt.successClass)
+	
+								modal.find('.modal-title').text('Exito!')
+								modal.find('.modal-body').text('El mensaje fue enviado correctamente!')
+	
+								setTimeout(function(){
+									form
+									.removeClass(opt.successClass)
+									.trigger('reset')
+								},opt.successShowDelay)
+							}else{							
+								modal.find('.modal-title').text('Error!')
+								modal.find('.modal-body').html(e)
+	
+								form
+									.removeClass(opt.processingClass)
+									.addClass(opt.responseErrorClass)
+	
+								$('#recaptcha_response_field',form).val('')
+	
+								setTimeout(function(){
+									form
+										.removeClass(opt.responseErrorClass)
+										//.trigger('reset')								
+								},opt.successShowDelay)
+							}
+							modal.modal({keyboard:true})
+						}						
 					})				
 				}				
 				return false

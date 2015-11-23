@@ -121,22 +121,28 @@ class AutosController extends Controller
 
     public function actionCatalogo()
     {
-    	$models = Autos::find()->all();
+    	//$models = Autos::find()->all();
     	$modelSearch = new AutosSearch();
+    	$dataProvider = $modelSearch->search(Yii::$app->request->queryParams);
+    	$models = $dataProvider->getModels();
     	 
     	return $this->render('catalogo', [
 	    	'models' => $models,
 	    	'modelSearch' => $modelSearch,
-	        'dataProvider' => $dataProvider,
     	]);
     }
 
     public function actionCatalogoajax()
     {
     	// FORMAT_HTML , FORMAT_JSON , FORMAT_JSONP , FORMAT_RAW , FORMAT_XML
-    	Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+    	Yii::$app->response->format = \yii\web\Response::FORMAT_HTML;
     	
-    	$searchModel = new AutosSearch();
-    	$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+    	$modelSearch = new AutosSearch();
+    	$dataProvider = $modelSearch->search(Yii::$app->request->queryParams);
+    	$models = $dataProvider->getModels();
+    	
+    	$html = $modelSearch->getAjaxHTML($models);
+    	
+    	return $html;
     }
 }

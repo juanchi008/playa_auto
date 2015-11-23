@@ -127,6 +127,7 @@
 }
 /* Contact Form Processing Box
 ========================================================*/
+.contact-form-loader, 
 #contact-form .contact-form-loader {
   position: absolute;
   z-index: -1;
@@ -143,6 +144,7 @@
   background-size: 5%;
   opacity: 0;
 }
+.processing .contact-form-loader,
 #contact-form.processing .contact-form-loader {
   opacity: .7;
   z-index: 99;

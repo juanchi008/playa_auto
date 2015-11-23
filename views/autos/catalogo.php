@@ -55,13 +55,15 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
 </div>
 
-<section id="content"><div class="ic">More Website Templates @ TemplateMonster.com - September08, 2014!</div>
+<section id="content">
+
+	<div class="ic">More Website Templates @ TemplateMonster.com - September08, 2014!</div>
     <div class="container">
         <div class="row wrap_11 wrap_20">
             <div class="grid_12">
                 <div class="text_7 color_2">
 <!--                 	<form id="search" name="search" action="#"> -->
-                    <?php $form = ActiveForm::begin([ 'id' => 'catalagoFilter', 'method' => 'get', 'action' => Yii::$app->request->url.'ajax',] ); 
+                    <?php $form = ActiveForm::begin([ 'id' => 'catalogoSearch', 'method' => 'get', 'action' => Yii::$app->homeUrl.'autos/catalogoajax',] ); 
                     
                     	echo $form->errorSummary($modelSearch); 
                     	?>
@@ -71,15 +73,17 @@ $this->params['breadcrumbs'][] = $this->title;
 	                	Busqueda: 
 	                    <ul id="filters">
 	                        <li>
-	                        	<select id="brand">
+	                        	<select id="marca" name="AutosSearch[marca]" class="name">
 	                        		<option value="">---Marcas ---</option>
 	                        		<option value="BMW">BMW</option>
 	                        		<option value="Mercedez">Mercedez</option>
-	                        		<option value="Audi">Mercedez</option>
+	                        		<option value="Audi">Audi</option>
+	                        		<option value="Nissan">Nissan</option>
+	                        		<option value="Volvo">Volvo</option>
 	                        	</select>
 	                        </li>
 	                        <li>
-	                        	<select id="prices">
+	                        	<select id="precio" name="AutosSearch[precio]">
 	                        		<option value="">--- Precios---</option>
 	                        		<option value="5000">Menor a 5000</option>
 	                        		<option value="5000 - 10000">5000 $ -10000 $</option>
@@ -96,14 +100,15 @@ $this->params['breadcrumbs'][] = $this->title;
 	                        	</select>
 	                        </li>
 	                        <li>
-	                        	<select id="recent">
+	                        	<select id="sort" name="AutosSearch[sort]">
 	                        		<option value="">--- Nuevos ---</option>
-	                        		<option value="asc">Ascendente</option>
-	                        		<option value="desc">Descendente</option>
+	                        		<option value="1">Ascendente</option>
+	                        		<option value="2">Descendente</option>
 	                        	</select>
 	                        </li>
 	                        <li>
-	                        	<input type="submit" name="submit" value="search"/>
+<!--  	                        	<a class="btn_3" href="#" data-type="submit">Buscar</a> -->
+	                        	<input type="submit" name="AutosSearch[submit]" value="search"/>
 	                        	<div class="contact-form-loader"></div>
 	                        </li>
 	                    </ul>
@@ -116,7 +121,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="container">
             <div class="row">
                 <div class="grid_12">
-                    <div class="isotope row">
+                    <div id="ajaxContainer" class="isotope row">
                     
                     <?php 
                     foreach($models as $model) {
@@ -135,8 +140,9 @@ $this->params['breadcrumbs'][] = $this->title;
                                         <span style="font-weight: bold;">kilometraje:</span> <?php echo $model->kilometraje; ?><br/>
                                         <span style="font-weight: bold;">Precio:</span> <?php echo number_format($model->precio, 0, '.', '.'); ?> $
                                     </p>
-                                    <a class="btn_2" href="#">Más Detalles</a></div>
-                                    <!-- <a class="btn_2" href="#">Reservar</a></div>-->
+                                    <a class="btn_2" href="#">Más Detalles</a>
+                                 </div>
+                                 <!-- <a class="btn_2" href="#">Reservar</a></div>-->
                             </div>
                         </div>
                         <?php 
@@ -250,4 +256,20 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
     
 </section>
-</div>
+
+<?php 
+$jsParams = ['pageUrl' => Yii::$app->homeUrl.'autos/catalogoajax'];
+$jsScript = <<<EOD
+$(document).ready(function () {
+	$('#catalogoSearch').TMForm({	
+		mailHandlerURL:'{$jsParams['pageUrl']}',
+		targetDivId: 'ajaxContainer',
+		responseType: 'html',
+		method: 'GET'
+	});
+});
+EOD;
+//$this->getView()->registerJs( $jsScript);
+$this->registerJs($jsScript);
+
+?>
