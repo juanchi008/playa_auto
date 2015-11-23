@@ -600,7 +600,8 @@ class ChronoMailer
         }
         else
         {
-            if (!$this->smtp['serv'] OR !$this->smtp['login'] OR !$this->smtp['pass'] OR !$this->smtp['port'])
+            //if (!$this->smtp['serv'] OR !$this->smtp['login'] OR !$this->smtp['pass'] OR !$this->smtp['port'])
+            if (!$this->smtp['serv'] OR !$this->smtp['port'])
             {
                 $this->status_mail['status'] = false;
                 $this->status_mail['message'] = $this->msg['errorSmtpSettings'];

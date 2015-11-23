@@ -105,15 +105,15 @@ class SiteController extends BaseController
         	// SET email settings
         	$mail = new ChronoMailer("utf-8");
         	$mail->From(Yii::$app->params['adminEmail']);
-        	//$mail->To(Yii::$app->params['adminEmail']);
-        	$mail->To('checkermate@hotmail.com');
+        	$mail->To(Yii::$app->params['adminEmail']);
         	$mail->Cc(Yii::$app->params['partnerEmail']);
-        	$mail->Bcc(Yii::$app->params['partnerEmail']);
+        	//$mail->Bcc(Yii::$app->params['partnerEmail']);
         	$mail->Subject($model->subject);
         	$mail->Body($model->body,'html');
         	
         	// OPTIONAL SEND-METHOD :: SMTP 
-        	//$mail->smtp_on( 'server', 'emal', 'password', 'port');
+        	//$mail->smtp_on( 'smtp.copaco.com.py', 'gramacchi', 'ybudxrvv', '587');
+        	//$mail->smtp_on( 'smtp-mail.outlook.com', 'juanchi_008manuel@hotmail.com', 'password', '587');
         	
         	// SET SMTP TYPE
         	if ( $mail->Send() ) {
@@ -124,6 +124,8 @@ class SiteController extends BaseController
         	}
         }
         $msg = "";
+        $msg .= "Yii::app->request->isAjax = ".Yii::$app->request->isAjax.'<br/>';
+        $msg .= "isModelLoaded = ".$isModelLoaded.'<br/>';
         foreach ($model->errors as $errorField => $errorList) {
 
         	if ( is_string($errorList) ) {

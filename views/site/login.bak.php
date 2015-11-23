@@ -10,7 +10,6 @@ use yii\bootstrap\ActiveForm;
 $this->title = 'Login';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<section id="content"><div class="ic">More Website Templates @ TemplateMonster.com - September08, 2014!</div>
 <div class="site-login">
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -46,4 +45,3 @@ $this->params['breadcrumbs'][] = $this->title;
         To modify the username/password, please check out the code <code>app\models\User::$users</code>.
     </div>
 </div>
-</section>
