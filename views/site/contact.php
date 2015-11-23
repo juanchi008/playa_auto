@@ -75,7 +75,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                                 <input type="text" name="name" placeholder="Nombre:" value=""
                                                        data-constraints="@Required @JustLetters"/>
                                                 <span class="empty-message">*Este Campo es requerido.</span>
-                                                <span class="error-message">*This is not a valid name.</span>
+                                                <span class="error-message">*Nombre no valido.</span>
                                             </label>
                                         </div>
                                         <div class="grid_2">
@@ -83,28 +83,28 @@ $this->params['breadcrumbs'][] = $this->title;
                                                 <input type="text" name="email" placeholder="E-mail:" value=""
                                                        data-constraints="@Required @Email"/>
                                                 <span class="empty-message">*Este Campo es requerido.</span>
-                                                <span class="error-message">*This is not a valid email.</span>
+                                                <span class="error-message">*E-mail no valido.</span>
                                             </label>
                                         </div>
                                         <div class="grid_2">
                                             <label class="phone">
                                                 <input type="text" name="phone" placeholder="Telefono:" value=""/>
                                                 <span class="empty-message">*Este Campo es requerido.</span>
-                                                <span class="error-message">*This is not a valid phone.</span>
+                                                <span class="error-message">*Telefono no valido.</span>
                                             </label>
                                         </div>
                                     </div>
                                     <label class="message">
-                                     <input type="text" name="subject" placeholder="Sujeto:" value=""
+                                     <input type="text" name="subject" placeholder="Destinatario:" value=""
                                      		data-constraints="@Required "/>
                                      	<span class="empty-message">*Este Campo es requerido.</span>
-                                     	<span class="error-message">*This is not a valid sbject.</span>
+                                     	<span class="error-message">*Destinatario no valido.</span>
                                     </label>
                                     <label class="message">
                                         <textarea name="body" placeholder="Mensaje"
                                                   data-constraints='@Required @Length(min=10,max=999999)'></textarea>
                                         <span class="empty-message">*Este Campo es requerido.</span>
-                                        <span class="error-message">*The message is too short.</span>
+                                        <span class="error-message">*El mensaje es muy corto.</span>
                                     </label>
                                     <div class="btn-wrap">
                                         <a class="btn_3" href="#" data-type="reset">Limpiar</a>

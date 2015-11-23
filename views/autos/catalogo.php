@@ -75,7 +75,7 @@ $this->params['breadcrumbs'][] = $this->title;
 	                        <li>
 	                        	<select id="marca" name="AutosSearch[marca]" class="name">
 	                        		<option value="">---Marcas ---</option>
-	                        		<option value="BMW">BMW</option>
+	                        		<option value="toyota">Toyota</option>
 	                        		<option value="Mercedez">Mercedez</option>
 	                        		<option value="Audi">Audi</option>
 	                        		<option value="Nissan">Nissan</option>
@@ -130,6 +130,8 @@ $this->params['breadcrumbs'][] = $this->title;
                             <div class="box_7">
                                 <div class="img-wrap">
                                     <img src="../../images/index-2_img01.jpg" alt="Image 1"/>
+                                    
+                                    
                                 </div>
                                 <div class="caption">
                                     <h3 class="text_2 color_2"><a href="#"><?php echo $model->marca.' - '.$model->modelo; ?></a></h3>
