@@ -10,11 +10,14 @@ use yii\bootstrap\ActiveForm;
 $this->title = 'Login';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<section id="content"><div class="ic">More Website Templates @ TemplateMonster.com - September08, 2014!</div>
-<div class="site-login">
+<!--========================================================
+                              CONTENT
+    =========================================================-->
+<section id="content">
+ <div class="site-login">
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>Please fill out the following fields to login:</p>
+    <p>Ingrese su datos</p>
 
     <?php $form = ActiveForm::begin([
         'id' => 'login-form',
@@ -40,10 +43,11 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
 
     <?php ActiveForm::end(); ?>
-
+	<!--  
     <div class="col-lg-offset-1" style="color:#999;">
         You may login with <strong>admin/admin</strong> or <strong>demo/demo</strong>.<br>
         To modify the username/password, please check out the code <code>app\models\User::$users</code>.
     </div>
+    -->
 </div>
 </section>
