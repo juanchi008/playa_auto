@@ -9,7 +9,6 @@ use app\components\Fn;
 
 $this->title = 'About';
 $this->params['breadcrumbs'][] = $this->title;
-///Fn::PrintVar($models, 'models');
 ?>
  <!--========================================================
                               CONTENT
@@ -97,7 +96,7 @@ $this->params['breadcrumbs'][] = $this->title;
 	                        	</select>
 	                        </li>
 	                        <li>
-	                        	<input type="submit" name="submit" value="search"
+	                        	<input type="submit" name="submit" value="search"/>
 	                        </li>
 	                    </ul>
                     </form>
