@@ -12,7 +12,7 @@ $config = [
     	'debug',
     	'gii',
 	],
-	'language'=>'fr',
+	'language'=>'es',
     'components' => [
 		// UrlManager
 

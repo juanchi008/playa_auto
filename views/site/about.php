@@ -13,7 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <section id="content"><div class="ic">More Website Templates @ TemplateMonster.com - September08, 2014!</div>
 <div class="container">
     <div class="row wrap_11 wrap_12">
-        <div class="grid_7">
+        <div class="col-lg-6">
             <h2 class="header_2 indent_1">Quienes Somos?</h2>
             <div class="box_4">
                 <p class="text_5">
@@ -22,7 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 
             </div>
         </div>
-        <div class="grid_5">
+        <div class="col-lg-6">
             <div class="img-wrap">
                 <img data-src="../../images/index-1_img01.jpg" class="img_1" src="../../images/preloader.gif" alt="Image 1"/>
                 <img data-src="../../images/index-1_img02.jpg" class="img_1" src="../../images/preloader.gif" alt="Image 2"/>
@@ -34,27 +34,27 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="bg_1 wrap_13 wrap_10">
     <div class="container">
         <div class="row">
-            <div class="grid_12">
+            <div class="col-lg-12">
                 <h2 class="header_2 indent_2">
                     Nuestro Equipo
                 </h2>
             </div>
         </div>
         <div class="row">
-            <div class="grid_6">
+            <div class="col-lg-5">
                 <div class="box_4">
                     <p class="text_5">
                       Nuestro equipo de técnicos para la venta de coches puede asesorarle acerca de los vehículos de nuestro catálogo que mejor se adaptan a sus necesidades concretas y presupuesto.
                     </p>
                     <div class="row">
-                        <div class="grid_2">
+                        <div class="col-lg-5">
                             <ul class="list_2 text_6">
                                 <li><a href="#">Jose Conigliaro</a></li>
                                 <li><a href="#">Cesar Conigliaro</a></li>
                                 <li><a href="#">Cinthia Conigliaro</a></li>
                             </ul>
                         </div>
-                        <div class="grid_2">
+                        <div class="col-lg-5">
                             <ul class="list_2 text_6">
                                 <li><a href="#">Juan Vera</a></li>
                                 <li><a href="#">Elias Frutos</a></li>
@@ -65,7 +65,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     
                 </div>
             </div>
-            <div class="grid_6">
+            <div class="col-lg-7">
                 <div class="img-wrap">
                     <img class="img_2" src="../../images/index-1_img03.jpg" alt="Image 3"/>
                     <img class="img_2" src="../../images/index-1_img04.jpg" alt="Image 4"/>
@@ -81,14 +81,14 @@ $this->params['breadcrumbs'][] = $this->title;
 </div>
 <div class="container">
     <div class="row wrap_14">
-        <div class="grid_12">
+        <div class="col-lg-12">
             <h2 class="header_1 wrap_8 color_3">
                Por que Nosotros?
             </h2>
         </div>
     </div>
     <div class="row wrap_15">
-        <div class="grid_4">
+        <div class="col-lg-4">
             <div class="box_5" data-index="1">
                 <h3 class="text_2 color_2"><a href="#">Confianza</a></h3>
                 <p class="text_3">
@@ -96,7 +96,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 </p>
             </div>
         </div>
-        <div class="grid_4">
+        <div class="col-lg-4">
             <div class="box_5" data-index="2">
                 <h3 class="text_2 color_2"><a href="#">Satisfacción del Cliente</a></h3>
                 <p class="text_3">
@@ -104,7 +104,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 </p>
             </div>
         </div>
-        <div class="grid_4">
+        <div class="col-lg-4">
             <div class="box_5" data-index="3">
                 <h3 class="text_2 color_2"><a href="#">Selección Producto</a></h3>
                 <p class="text_3">

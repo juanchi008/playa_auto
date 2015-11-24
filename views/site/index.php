@@ -38,7 +38,7 @@ $this->title = 'My Yii Application';
 =========================================================-->
 <div class="container">
     <div class="row wrap_1 wrap_5">
-        <div class="grid_4">
+        <div class="col-lg-4">
             <div class="box_1">
                 <div class="icon_1"></div>
                 <h3 class="text_2 color_2 maxheight1"><a href="#">Vender</a></h3>
@@ -47,7 +47,7 @@ $this->title = 'My Yii Application';
                 </p>
                 <a class="btn_2" href="#">Más Detalles</a></div>
         </div>
-        <div class="grid_4">
+        <div class="col-lg-4">
             <div class="box_1">
                 <div class="icon_2"></div>
                 <h3 class="text_2 color_2 maxheight1"><a href="#">Comprar</a></h3>
@@ -56,7 +56,7 @@ $this->title = 'My Yii Application';
                 </p>
                 <a class="btn_2" href="#">Más Detalles</a></div>
         </div>
-        <div class="grid_4">
+        <div class="col-lg-4">
             <div class="box_1">
                 <div class="icon_3"></div>
                 <h3 class="text_2 color_2 maxheight1"><a href="#">Financiar</a></h3>
@@ -78,7 +78,7 @@ $this->title = 'My Yii Application';
             </div>
         </div>
         <div class="row">
-            <div class="grid_12">
+            <div class="col-lg-12">
                 <div class="box_1">
                     <p class="text_3">
                        <!--== Project description
@@ -105,7 +105,7 @@ Disponemos de una amplia flota de vehículos, así como de un servicio de manten
 </div>
 <div class="container">
     <div class="row wrap_1">
-        <div class="grid_6">
+        <div class="col-lg-6">
             <div class="wrap_6">
                 <div class="box_2 maxheight2">
                     <div class="put-left"><img src="../../images/index_img01.png" alt="Image 1"/></div>
@@ -124,7 +124,7 @@ Disponemos de una amplia flota de vehículos, así como de un servicio de manten
                 </div>
             </div>
         </div>
-        <div class="grid_6">
+        <div class="col-lg-6">
                 <div class="wrap_6">
                     <div class="box_2 maxheight2">
                         <div class="put-left"><img src="../../images/index_img02.png" alt="Image 2"/></div>
@@ -150,14 +150,14 @@ Acérquese a nosotros y con gusto le orientaremos.
 <div class="bg_1 wrap_7 wrap_5">
     <div class="container">
         <div class="row">
-            <div class="grid_12">
+            <div class="col-lg-12">
                 <h2 class="header_1 wrap_8 color_3">
                     Lo que piensa el cliente
                 </h2>
             </div>
         </div>
         <div class="row">
-            <div class="grid_12">
+            <div class="col-lg-12">
                 <div id="owl">
                     <div class="item">
                         <p class="text_3">
