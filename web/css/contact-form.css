@@ -59,7 +59,7 @@
 }
 /* Contact Form Input 
 ========================================================*/
-#contact-form input[type='password'], 
+/*#contact-form input[type='password'], */
 #contact-form input[type='text'] {
   width: 100%;
   background-color: #ffffff;

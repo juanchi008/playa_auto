@@ -195,7 +195,7 @@ img {
   background: #02918d;
 }
 .sf-menu > li + li {
-  margin-left: 39px;
+  margin-left: 10px;
 }
 .sf-menu ul {
   position: absolute;
@@ -234,7 +234,7 @@ img {
 /* First level sub-menu styles
 ========================================================*/
 .sf-menu > li > ul {
-  top: 120%;
+  top: 100%;
   left: 50%;
   margin-left: -110px;
 }

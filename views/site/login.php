@@ -16,20 +16,15 @@ $this->params['breadcrumbs'][] = $this->title;
 	<section id="content">
 
         <div class="container">
-            <div class="row wrap_11">
-                <div class="grid_12">
+             <div class="row wrap_11">
+                <div class="col-lg-12">
                     <h2 class="header_2 indent_4"><?= Html::encode($this->title) ?></h2>
-                </div>
-            </div>
-        </div>
-        
-        <div class="container">
-            <div class="row">
 
-                <div class="grid_7">
-                
-                    <div id="contact-form">
-
+                    <div style="border: 1px solid #cccccc; padding: 20px;">
+                    
+                    	<legend><p class="text_7 color_6">Ingrese su datos</p></legend>
+                    	<br/>&nbsp;<br/>
+                    	
 					    <?php 
 					    $form = ActiveForm::begin([
 					        'id' => 'login-form',
@@ -40,31 +35,24 @@ $this->params['breadcrumbs'][] = $this->title;
 					            'labelOptions' => ['class' => 'col-lg-1 control-label'],
 					        ],
 					    ]); ?>
-					    
-                            <fieldset style="border: 1px solid #cccccc; padding-top: 10px; padding-bottom: 20px;">
-                            
-                            	<legend style="margin-left: 15px;"><p class="text_7 color_6">Ingrese su datos</p></legend>
-                            	
-								<div class="grid_6">
-						        	<?= $form->field($model, 'username') ?>
-								</div>
+	                            	
+							<?= $form->field($model, 'username') ?>
 								
-								<div class="grid_6">
-						        	<?= $form->field($model, 'password')->passwordInput(['class' => 'message']) ?>
-								</div>
-								
-								<div class="grid_6">
-							        <?= $form->field($model, 'rememberMe')->checkbox() ?>
-								</div>
-								
-						        <div class="grid_6">
-                                    <a class="btn_3" href="#" data-type="submit" data-method="POST">Enviar</a>
-						            <!--<?= Html::submitButton('Login', ['name' => 'login-button']) ?> -->
-						        </div>
-					
-                            </fieldset>
+						    <?= $form->field($model, 'password')->passwordInput() ?>
+						    
+					        <?= $form->field($model, 'rememberMe')->checkbox([
+					            'template' => "<div class=\"col-lg-offset-1 col-lg-3\">{input} {label}</div>\n<div class=\"col-lg-8\">{error}</div>",
+					        ]) ?>
+
+					        <div class="form-group">
+					            <div class="col-lg-offset-1 col-lg-11">
+									<?= Html::submitButton('Login', ['class' => 'btn_3', 'name' => 'login-button']) ?>
+					            </div>
+					        </div>
+					        
 					    <?php ActiveForm::end(); ?>
-    				</div>
+				    
+			    	</div>
     			</div>
     		</div>
     	</div>

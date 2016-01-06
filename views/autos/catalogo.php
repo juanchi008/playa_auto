@@ -16,14 +16,14 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="bg_1 wrap_16 wrap_10">
     <div class="container">
         <div class="row">
-            <div class="grid_12">
+            <div class="col-lg-12">
                 <h2 class="header_1 indent_2 color_3">
                     Toda Clase de Modelos
                 </h2>
                 <div id="owl_2">
                     <div class="item">
                         <div class="row">
-                            <div class="preffix_1 grid_10">
+                            <div class="preffix_1 col-lg-10">
                                 <ul class="list_3">
                                     <li><a href="#"><img src="../../images/index-1_img09.png" alt="Image 9"/></a></li>
                                     <li><a href="#"><img src="../../images/index-1_img10.png" alt="Image 10"/></a></li>
@@ -37,7 +37,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     </div>
                     <div class="item">
                         <div class="row">
-                            <div class="preffix_1 grid_10">
+                            <div class="preffix_1 col-lg-10">
                                 <ul class="list_3">
                                     <li><a href="#"><img src="../../images/index-1_img09.png" alt="Image 9"/></a></li>
                                     <li><a href="#"><img src="../../images/index-1_img10.png" alt="Image 10"/></a></li>
@@ -60,7 +60,7 @@ $this->params['breadcrumbs'][] = $this->title;
 	<div class="ic">More Website Templates @ TemplateMonster.com - September08, 2014!</div>
     <div class="container">
         <div class="row wrap_11 wrap_20">
-            <div class="grid_12">
+            <div class="col-lg-12">
                 <div class="text_7 color_2">
 <!--                 	<form id="search" name="search" action="#"> -->
                     <?php $form = ActiveForm::begin([ 'id' => 'catalogoSearch', 'method' => 'get', 'action' => Yii::$app->homeUrl.'autos/catalogoajax',] ); 
@@ -120,13 +120,13 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="bg_1 wrap_17">
         <div class="container">
             <div class="row">
-                <div class="grid_12">
+                <div class="col-lg-12">
                     <div id="ajaxContainer" class="isotope row">
                     
                     <?php 
                     foreach($models as $model) {
                     	?>
-                        <div class="element-item grid_4 c1">
+                        <div class="element-item col-lg-4 c1">
                             <div class="box_7">
                                 <div class="img-wrap">
                                     <img src="../../images/index-2_img01.jpg" alt="Image 1"/>

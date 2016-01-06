@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
    		<!-- <div class="ic">More Website Templates @ TemplateMonster.com - September08, 2014!</div> -->
         <div class="container">
             <div class="row wrap_11">
-                <div class="grid_12">
+                <div class="col-lg-12">
                     <h2 class="header_2 indent_4">Ubicación</h2>
                 </div>
             </div>
@@ -27,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="bg_1 wrap_17 wrap_19">
             <div class="container">
                 <div class="row">
-                    <div class="grid_12">
+                    <div class="col-lg-12">
                        <iframe class="map"
                                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1275.2329701451713!2d-57.55339603635406!3d-25.307445283447727!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0000000000000000%3A0x5cb2e660c64bfcc4!2sPMT+Policia+Municipal+de+transito+de+Asuncion!5e0!3m2!1ses-419!2spy!4v1448247429391" 
                                 style="border:0">
@@ -35,7 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     </div>
                 </div>
                 <div class="row">
-                    <div class="grid_6">
+                    <div class="col-lg-6">
                         <div class="wrap_18">
                             <h2 class="header_2 indent_5">
                                 Información
@@ -55,7 +55,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             </address>
                         </div>
                     </div>
-                    <div class="grid_6">
+                    <div class="col-lg-6">
                         <div class="wrap_18">
                             <h2 class="header_2 indent_2">
                                 Contactenos
@@ -70,7 +70,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <?php echo $form->errorSummary($model); ?>
                                 <fieldset>
                                     <div class="row">
-                                        <div class="grid_2">
+                                        <div class="col-lg-4">
                                             <label class="name">
                                                 <input type="text" name="name" placeholder="Nombre:" value=""
                                                        data-constraints="@Required @JustLetters"/>
@@ -78,7 +78,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                                 <span class="error-message">*Nombre no valido.</span>
                                             </label>
                                         </div>
-                                        <div class="grid_2">
+                                        <div class="col-lg-4">
                                             <label class="email">
                                                 <input type="text" name="email" placeholder="E-mail:" value=""
                                                        data-constraints="@Required @Email"/>
@@ -86,7 +86,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                                 <span class="error-message">*E-mail no valido.</span>
                                             </label>
                                         </div>
-                                        <div class="grid_2">
+                                        <div class="col-lg-4">
                                             <label class="phone">
                                                 <input type="text" name="phone" placeholder="Telefono:" value=""/>
                                                 <span class="empty-message">*Este Campo es requerido.</span>

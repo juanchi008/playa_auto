@@ -42,9 +42,10 @@ class Autos extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id', 'marca', 'modelo', 'ano', 'color', 'no_motor', 'matricula_auto', 'no_chassis', 'observaciones', 'kilometraje', 'no_chapa', 'precio', 'fecha_registro', 'id_estado'], 'required'],
+            [['marca', 'modelo', 'ano', 'color', 'no_motor', 'matricula_auto', 'no_chassis', 'observaciones', 'kilometraje', 'no_chapa', 'precio', 'id_estado'], 'required'],
             [['id', 'precio', 'id_estado'], 'integer'],
             [['fecha_registro'], 'safe'],
+            [['id'], 'safe', 'on' => 'register'],
             [['marca', 'modelo', 'color', 'no_motor', 'matricula_auto', 'no_chassis', 'observaciones', 'kilometraje', 'no_chapa'], 'string', 'max' => 50],
             [['ano'], 'string', 'max' => 4]
         ];
@@ -119,6 +120,25 @@ class Autos extends \yii\db\ActiveRecord
             return $arr[$searchIndex];
     }
 
+    /**
+     * @inheritdoc
+     */
+    public function save($runValidation = false, $attributeNames = null)
+    {
+    	if($this->isNewRecord) {
+    		//$this->date_login = '0000-00-00 00:00:00';
+    		//$this->date_modify = '0000-00-00 00:00:00';
+    		$this->fecha_registro = Yii::$app->fn->GetDateTime();
+    	}
+    	else {
+    		//$this->date_login = Yii::$app->fn->GetDateTime();
+    		//$this->date_modify = Yii::$app->fn->GetDateTime();
+    		;
+    	}
+    	return parent::save($runValidation, $attributeNames);
+    	//return false;
+    }
+    
     /**
      * @return PHP_ARRAY_ASSOC
      */

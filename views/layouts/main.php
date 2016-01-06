@@ -21,6 +21,8 @@ AppAsset::register($this);
     <meta name="format-detection" content="telephone=no"/>
     <link rel="icon" href="../../images/favicon.ico" type="image/x-icon">
     
+    <?php $this->head() ?>
+    
     <link rel="stylesheet" href="../../css/grid.css">
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../css/camera.css"/>
@@ -28,9 +30,8 @@ AppAsset::register($this);
     <link rel="stylesheet" href="../../css/isotope.css"/>
     <link rel="stylesheet" href="../../css/contact-form.css"/>
     
-    <title>Playa de Autos</title>
+    <title><?= Html::encode($this->title) ?></title>
     
-    <?php //$this->head() ?>
     
 </head>
 
@@ -46,7 +47,7 @@ AppAsset::register($this);
     <div id="stuck_container">
         <div class="container">
             <div class="row">
-                <div class="grid_12">
+                <div class="col-lg-12">
                     <div class="brand put-left">
                         <h1>
                             <a href="<?= Yii::$app->homeUrl ?>">
@@ -58,12 +59,11 @@ AppAsset::register($this);
                         <ul class="sf-menu">
                             <li class="current"><a href="<?php echo Yii::$app->homeUrl; ?>site/index">Inicio</a></li>
                             <li><a href="<?php echo Yii::$app->homeUrl; ?>autos/catalogo">Catálogo</a>
-                                <!--  <ul>
+                                <ul>
                                     <li><a href="#">Modelo</a></li>
                                     <li><a href="#">Precio</a>
                                     <li><a href="#">Reciente</a>
                                 </ul>
-                                -->
                             <li>
                                 <a href="<?php echo Yii::$app->homeUrl; ?>site/about">Acerca</a>
                             </li>
@@ -77,8 +77,12 @@ AppAsset::register($this);
 	                        }
 	                        else {
 								?>
-	                            <li><a id="logoutLink" href="#">Logout</a></li>
-	                            
+								<li><a href="#">Mi Cuenta</a>
+									<ul>
+										<li><a href="<?php echo Yii::$app->homeUrl; ?>autos/create">Vender mi auto</a></li>
+										<!-- <li><a href="<?php echo Yii::$app->homeUrl; ?>autos">Manage my cars sold</a>  -->
+									</ul>
+								<li>
 								<li><a href="#">Administracion</a>
 									<ul>
 									<li><a href="<?php echo Yii::$app->homeUrl; ?>admins">Admins/</a></li>
@@ -92,6 +96,8 @@ AppAsset::register($this);
 									<li><a href="<?php echo Yii::$app->homeUrl; ?>ventas">Ventas</a>
 									</ul>
 								<li>
+								
+	                            <li><a id="logoutLink" href="#">Logout</a></li>
 								<?php
 								//  'linkOptions' => ['data-method' => 'post']
 								// <li><form method="POST" action="<?php echo Yii::$app->homeUrl; site/logout"> <a href="#" data-method = "post">Logout</a></form></li>
@@ -120,7 +126,7 @@ AppAsset::register($this);
 <footer id="footer" class="color_9">
     <div class="container">
         <div class="row">
-            <div class="grid_12">
+            <div class="col-lg-12">
                 <p class="info text_4 color_4">
                     &copy; <span id="copyright-year"></span> Conigliaro Automóviles | <a href="#">Privacy Policy</a> <br/>
                     Created by <a href="#" rel="nofollow">Juanchi</a>

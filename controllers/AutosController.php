@@ -14,6 +14,22 @@ use yii\filters\VerbFilter;
  */
 class AutosController extends Controller
 {
+	/**
+	 * @inheritdoc
+	 */
+	public function beforeAction($action)
+	{
+		$csrfActionList = [
+			'delete' => false,
+		];
+		
+		if ( array_key_exists($action->id, $csrfActionList)) {
+			Yii::$app->controller->enableCsrfValidation = $csrfActionList[$action->id];
+		}
+	
+		return parent::beforeAction($action);
+	}
+	
     public function behaviors()
     {
         return [
@@ -61,14 +77,20 @@ class AutosController extends Controller
     public function actionCreate()
     {
         $model = new Autos();
+        $msg = "";
+        //$model = $this->findModel(7);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
+            //return $this->redirect(['view', 'id' => $model->id]);
+        	$msg = "New car added success.";
+        } 
+        else {
+        	$msg = "New car validation failed.";
         }
+        return $this->render('create', [
+            'model' => $model,
+           	'msg' => $msg,
+        ]);
     }
 
     /**
