@@ -29,10 +29,8 @@ class Provincias extends \yii\db\ActiveRecord
     {
         return [
             [['nombre_provincia'], 'required'],
-		[['nombre_provincia'], 'unique'],
             [['id'], 'integer'],
             [['nombre_provincia'], 'string', 'max' => 50]
-
         ];
     }
 

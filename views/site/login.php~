@@ -59,7 +59,7 @@ $this->params['breadcrumbs'][] = $this->title;
 								
 						        <div class="grid_6">
                                     <a class="btn_3" href="#" data-type="submit" data-method="POST">Enviar</a>
-						            <!--<?= Html::submitButton('Login', ['name' => 'login-button']) ?> -->
+						            <?= Html::submitButton('Login', ['name' => 'login-button']) ?>
 						        </div>
 					
                             </fieldset>

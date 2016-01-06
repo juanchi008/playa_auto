@@ -28,7 +28,7 @@ AppAsset::register($this);
     <link rel="stylesheet" href="../../css/isotope.css"/>
     <link rel="stylesheet" href="../../css/contact-form.css"/>
     
-    <title>Playa de Autos</title>
+    <title><Playa de Autos></title>
     
     <?php //$this->head() ?>
     
