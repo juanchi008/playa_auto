@@ -36,7 +36,7 @@ use app\models\Users;
 	
 	    <?php echo $form->field($model, 'passwordConfirm')->passwordInput(['maxlength' => true]); ?>
 	
-	
+	    <?php if (Yii::$app->user->identity->isSuperadmin()) : ?>
 	    	<?php echo $form->field($model, 'is_super_admin')->checkbox(); ?>
 	    	
 	    	<?php if (!$model->isNewRecord) : ?>
@@ -51,6 +51,7 @@ use app\models\Users;
 		    		Yii::$app->fn->GetAdminStatus(),
 		    		['prompt'=>'--- Select Status ---']
 	    		); ?>
+	    <?php endif; ?>
 	    	
 	    
 	
