@@ -15,29 +15,35 @@ use yii\widgets\ActiveForm;
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'id') ?>
-    
+    <?php // echo $form->field($model, 'id') ?>
+
+    <?php // echo $form->field($model, 'nombre_usuario') ?>
+
+    <?php // echo $form->field($model, 'contrasena') ?>
+
+    <?= $form->field($model, 'nombre') ?>
+
     <?= $form->field($model, 'email') ?>
 
-    <?= $form->field($model, 'password') ?>
-    
-    <?= $form->field($model, 'fullname') ?>
+    <?php echo $form->field($model, 'fecha_registro') ?>
 
-    <?= $form->field($model, 'is_super_admin') ?>
+    <?php // echo $form->field($model, 'fecha_conexion') ?>
 
-    <?php echo $form->field($model, 'added_by_id') ?>
+    <?php // echo $form->field($model, 'fecha_modif') ?>
 
-    <?= $form->field($model, 'date_login') ?>
-    
-    <?php echo $form->field($model, 'date_modify') ?>
+    <?php echo $form->field($model, 'id_estado') ?>
 
-    <?php echo $form->field($model, 'date_create') ?>
+    <?php // echo $form->field($model, 'auth_key') ?>
 
-    <?php echo $form->field($model, 'status_id') ?>
+    <?php // echo $form->field($model, 'password_reset_token') ?>
+
+    <?php // echo $form->field($model, 'role') ?>
+
+    <?php echo $form->field($model, 'is_super_admin') ?>
 
     <div class="form-group">
-        <?= Html::submitButton(Yii::t('app', 'Search'), ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton(Yii::t('app', 'Reset'), ['class' => 'btn btn-default']) ?>
+        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
+        <?= Html::resetButton('Reset', ['class' => 'btn btn-default']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

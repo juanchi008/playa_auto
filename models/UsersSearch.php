@@ -18,8 +18,8 @@ class UsersSearch extends Users
     public function rules()
     {
         return [
-            [['id', 'is_super_admin', 'added_by_id'], 'integer'],
-            [['id', 'email', 'password', 'fullname', 'is_super_admin', 'added_by_id', 'date_login', 'date_modify', 'date_create','status_id'], 'safe'],
+            [['id', 'id_estado', 'role', 'is_super_admin'], 'integer'],
+            [['id', 'nombre_usuario', 'contrasena', 'nombre', 'email', 'fecha_registro', 'fecha_conexion', 'fecha_modif', 'auth_key', 'password_reset_token'], 'safe'],
         ];
     }
 
@@ -57,14 +57,20 @@ class UsersSearch extends Users
 
         $query->andFilterWhere([
             'id' => $this->id,
+            'fecha_registro' => $this->fecha_registro,
+//            'fecha_conexion' => $this->fecha_conexion,
+//            'fecha_modif' => $this->fecha_modif,
+            'id_estado' => $this->id_estado,
+            'role' => $this->role,
             'is_super_admin' => $this->is_super_admin,
-            'added_by_id' => $this->added_by_id,
-  //          'date_modify' => $this->date_modify,
-            'date_create' => $this->date_create,
         ]);
 
-        $query->andFilterWhere(['like', 'password', $this->password])
-            ->andFilterWhere(['like', 'email', $this->email]);
+        $query->andFilterWhere(['like', 'nombre_usuario', $this->nombre_usuario])
+            ->andFilterWhere(['like', 'contrasena', $this->contrasena])
+            ->andFilterWhere(['like', 'nombre', $this->nombre])
+            ->andFilterWhere(['like', 'email', $this->email])
+            ->andFilterWhere(['like', 'auth_key', $this->auth_key])
+            ->andFilterWhere(['like', 'password_reset_token', $this->password_reset_token]);
 
         return $dataProvider;
     }

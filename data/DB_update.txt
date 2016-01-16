@@ -5,7 +5,7 @@
 User login
 =====================
 
-Rename usuarios in clientes
+-- # Rename usuarios in clientes
 
 ALTER TABLE public.clientes ADD COLUMN auth_key character varying(32);
 ALTER TABLE public.clientes ALTER COLUMN auth_key SET DEFAULT 0;
@@ -18,7 +18,7 @@ ALTER TABLE public.clientes ADD COLUMN role integer;
 ALTER TABLE public.clientes ALTER COLUMN role SET DEFAULT 0;
 ALTER TABLE public.clientes ALTER COLUMN role SET NOT NULL;
 
-Rename admins in users
+-- # Rename admins in users
 
 ALTER TABLE public.users ADD COLUMN auth_key character varying(32);
 ALTER TABLE public.users ALTER COLUMN auth_key SET DEFAULT 0;
@@ -34,3 +34,16 @@ ALTER TABLE public.users ALTER COLUMN role SET NOT NULL;
 ALTER TABLE public.users ADD COLUMN is_super_admin smallint;
 ALTER TABLE public.users ALTER COLUMN is_super_admin SET NOT NULL;
 ALTER TABLE public.users ALTER COLUMN is_super_admin SET DEFAULT 0;
+
+-- # Rename admins in users
+
+ALTER TABLE public.autos ADD COLUMN img character varying(255);
+
+
+=====================
+2016-01-15
+User login
+=====================
+
+ALTER TABLE public.users ADD COLUMN nombre_usuario character varying(50);
+ALTER TABLE public.users ALTER COLUMN nombre_usuario SET NOT NULL;

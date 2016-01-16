@@ -3,11 +3,13 @@
 namespace app\controllers;
 
 use Yii;
-use yii\filters\AccessControl;
-use yii\web\Controller;
-use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use app\models\Identity;
+use app\components\AccessRule;
+use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
+use app\controllers\BaseController;
 use app\components\ChronoMailer;
 
 class SiteController extends BaseController
@@ -17,12 +19,19 @@ class SiteController extends BaseController
         return [
             'access' => [
                 'class' => AccessControl::className(),
+            	'ruleConfig' => [
+            		'class' => AccessRule::className(),
+            	],
                 'only' => ['logout'],
                 'rules' => [
                     [
                         'actions' => ['logout'],
                         'allow' => true,
-                        'roles' => ['@'],
+                        'roles' => [
+                        	Identity::ROLE_CLIENTES,
+                        	Identity::ROLE_ADMIN,
+                        	Identity::ROLE_SUPERADMIN
+                        ],
                     ],
                 ],
             ],
@@ -71,6 +80,14 @@ class SiteController extends BaseController
     public function actionLogout()
     {
         Yii::$app->user->logout();
+        
+        if(Yii::$app->session->has('user.role')) {
+    		Yii::$app->session->set('user.role',0);
+    	}
+        
+        if(Yii::$app->getRequest()->getCookies()->has('user_role')) {
+            Yii::$app->getResponse()->getCookies()->remove('user_role');
+        }
 
         return $this->goHome();
     }

@@ -6,8 +6,9 @@
 use yii\helpers\Html;
 //use yii\bootstrap\Nav;
 //use yii\bootstrap\NavBar;
-//use yii\widgets\Breadcrumbs;
+use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
+use app\components\Fn;
 
 AppAsset::register($this);
 ?>
@@ -112,7 +113,15 @@ AppAsset::register($this);
     </div>
 </header>
 
-<?php echo $content; ?>
+<?php 
+echo '<div class="container">'.
+			Breadcrumbs::widget([
+				'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+			]).
+	 '</div>';
+
+echo $content; 
+?>
 
 <form id="logoutForm" method="POST" action="<?php echo Yii::$app->homeUrl; ?>site/logout">
 	<input type="hidden" name="<?= Yii::$app->request->csrfParam; ?>" value="<?= Yii::$app->request->csrfToken; ?>" />

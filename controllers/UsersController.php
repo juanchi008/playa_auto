@@ -5,10 +5,13 @@ namespace app\controllers;
 use Yii;
 use app\models\Users;
 use app\models\UsersSearch;
-use app\controllers;
-use yii\web\NotFoundHttpException;
+use app\models\Identity;
+use app\components\AccessRule;
+use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
-use app\components\Fn;
+use app\controllers\BaseController;
+use yii\web\NotFoundHttpException;
+use yii\web\ForbiddenHttpException;
 
 /**
  * UsersController implements the CRUD actions for Users model.
@@ -18,6 +21,25 @@ class UsersController extends BaseController
     public function behaviors()
     {
         return [
+        		/*
+            'access' => [
+                'class' => AccessControl::className(),
+            	'ruleConfig' => [
+            		'class' => AccessRule::className(),
+            	],
+                'only' => ['index','view', 'create', 'update', 'delete'],
+                'rules' => [
+                    [
+                        'actions' => ['index','view', 'create', 'update', 'delete' ],
+                        'allow' => true,
+                        'roles' => [
+                        	Identity::ROLE_ADMIN,
+                        	Identity::ROLE_SUPERADMIN
+                        ],
+                    ],
+                ],
+            ],
+            */
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -33,6 +55,10 @@ class UsersController extends BaseController
      */
     public function actionIndex()
     {
+    	/*
+    	if(\Yii::$app->user->isGuest || !\Yii::$app->user->identity->isAdmin() )
+    		throw new ForbiddenHttpException('You are not allowed to access this page.');
+    	*/
         $searchModel = new UsersSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -63,23 +89,26 @@ class UsersController extends BaseController
     {
         $model = new Users();
         $model->setScenario('register');
-        
-		// Load from POST form
-		$postData = Yii::$app->request->post();
+		$post = Yii::$app->request->post();
+        $formName = basename($model->className());
 		
-        if ( $postData ) {
+        if ( $model->load($post ) ) {
         	
-        	$model->load($postData );
+        	// Default value
+        	$model->is_super_admin = (isset($post[$formName]['is_super_admin']) ) ? $post[$formName]['is_super_admin'] : 0;
+        	$model->role = ($model->is_super_admin) ? Identity::ROLE_SUPERADMIN : 30;
+        	$model->fecha_conexion = (isset($post[$formName]['fecha_conexion']) ) ? $post[$formName]['fecha_conexion'] : '1970-01-01';
+        	$model->fecha_modif = (isset($post[$formName]['fecha_modif']) ) ? $post[$formName]['fecha_modif'] : '1970-01-01';
+        	$model->fecha_registro = (isset($post[$formName]['fecha_registro']) ) ? $post[$formName]['fecha_registro'] : Yii::$app->fn->GetDate();
+        	$model->id_estado = (isset($post[$formName]['id_estado']) ) ? $post[$formName]['id_estado'] : 1;
+        	
 	        if ( $model->validate() ) {
+	        		$model->setPassword();
+	        		$model->generateAuthKey();
 	        	if($model->save())
 	        		return $this->redirect(['view', 'id' => $model->id]);
 	        }
         }
-        echo "<br><br><br><br>";
-        Fn::PrintVar('test','test');
-        Yii::$app->fn->PrintVar($postData, 'postData');
-        Yii::$app->fn->PrintVar($model, 'model');
-        //Yii::$app->fn->PrintVar($model->getScenario(), 'model->getScenario');
         // Load empty/error form
 		return $this->render('create', ['model' => $model] );
     }
@@ -93,14 +122,39 @@ class UsersController extends BaseController
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
+		$post = Yii::$app->request->post();
+        $formName = basename($model->className());
+		
+        // default Form value
+        $contrasenaPrevious = $model->contrasena;
+        $model->contrasena = '';
+        $model->passwordConfirm = '';
+        
+        if ( $model->load($post ) ) {
+        	
+        	// Default value
+        	$model->is_super_admin = (isset($post[$formName]['is_super_admin']) ) ? $post[$formName]['is_super_admin'] : $model->is_super_admin;
+        	$model->role = ($model->is_super_admin ) ? Identity::ROLE_SUPERADMIN : 30;
+        	$model->fecha_modif = Yii::$app->fn->GetDate();
+        	$model->id_estado = (isset($post[$formName]['id_estado']) ) ? $post[$formName]['id_estado'] : 1;
+        	if($model->contrasena != $model->passwordConfirm)
+        		$model->addError($model->contrasenaConfirm, 'Password Confirm must be repeated exactly.' );
+        	
+	        if ( !count($model->errors) && $model->validate() ) {
+	        	if($model->contrasena == '') {
+	        		$model->contrasena = $contrasenaPrevious;
+	        	}
+	        	else {
+	        		$model->setPassword();
+	        		$model->generateAuthKey();
+	        	}
+	        	if($model->save())
+	        		return $this->redirect(['view', 'id' => $model->id]);
+	        }
         }
+        return $this->render('update', [
+        	'model' => $model,
+        ]);
     }
 
     /**

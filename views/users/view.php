@@ -2,24 +2,28 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use app\models\Users;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Users */
 
-$this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Users'), 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = $model->nombre;
+$this->params['breadcrumbs'][] = ['label' => 'Admins', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => $model->nombre, 'url' => ['view', 'id' => $model->id]];
+$this->params['breadcrumbs'][] = 'Info';
 ?>
-<div class="users-view">
+<section id="content">
+<div class="container">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+<div class="users-view">
+    <h1>Info: <?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a(Yii::t('app', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a(Yii::t('app', 'Delete'), ['delete', 'id' => $model->id], [
+        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => Yii::t('app', 'Are you sure you want to delete this item?'),
+                'confirm' => 'Are you sure you want to delete this item?',
                 'method' => 'post',
             ],
         ]) ?>
@@ -29,14 +33,29 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'username',
-            'password',
-            'email:email',
-            'is_super_admin',
-            'admin_id',
-            'date_mod',
-            'date_creation',
+			'nombre',
+			'email:email',
+            'nombre_usuario',
+            'contrasena',
+			'role',
+			[
+				'label' => $model->getAttributeLabel('is_super_admin'),
+				'value' => Yii::$app->fn->GetYesNo($model->is_super_admin),
+			],
+			'auth_key',
+			'password_reset_token',
+			[
+				'label' => $model->getAttributeLabel('id_estado'),
+				'value' => Yii::$app->fn->GetAdminStatus($model->id_estado),
+			],
+            'fecha_registro',
+            'fecha_conexion',
+            'fecha_modif',
         ],
     ]) ?>
 
+</div>
+
+</div>
+</section>
 </div>

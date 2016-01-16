@@ -3,7 +3,7 @@
 namespace app\models;
 
 use Yii;
-use app\models\Courtier;
+use app\models\Clientes;
 use yii\base\NotSupportedException;
 use yii\web\IdentityInterface;
 use app\components\Fn;
@@ -12,15 +12,15 @@ class Identity extends \yii\base\Object implements IdentityInterface
 {
 	/*
     public $id;
-    public $username;
-    public $password;
+    public $nombre_usuario;
+    public $contrasena;
     public $authKey;
     public $accessToken;
 	*/
 	public $data = [];
 	
     const ROLE_USER = 10;
-    const ROLE_COURTIER = 20;
+    const ROLE_CLIENTES = 20;
     const ROLE_ADMIN = 30;
     const ROLE_SUPERADMIN = 40;
     
@@ -55,9 +55,6 @@ class Identity extends \yii\base\Object implements IdentityInterface
     		$rolePrevious = intval(Yii::$app->getRequest()->getCookies()->getValue('user_role'));
     		$roleCookie = $rolePrevious;
     		Yii::$app->session->set('user.role',$rolePrevious);
-    		if(Yii::$app->getRequest()->getCookies()->has('language')) {
-    			Yii::$app->session->set('user.lang', Yii::$app->getRequest()->getCookies()->getValue('language') );
-    		}
     	}
 
     	// FIND USER BY SELECTED ROLE
@@ -65,8 +62,8 @@ class Identity extends \yii\base\Object implements IdentityInterface
     		$user = null;
     		if( $rolePrevious >= static::ROLE_ADMIN)
     			$user =  Users::findOne($condition);
-    		elseif($rolePrevious >= static::ROLE_COURTIER)
-    			$user =  Courtier::findOne($condition);
+    		elseif($rolePrevious >= static::ROLE_CLIENTES)
+    			$user =  Clientes::findOne($condition);
 
     		if($user) {
     			$model = new Identity();
@@ -116,9 +113,9 @@ class Identity extends \yii\base\Object implements IdentityInterface
      * @param  string      $username
      * @return static|null
      */
-    public static function findByUsername($username)
+    public static function findByUsername($nombre_usuario)
     {
-    	return static::findOneCustom(['username' => $username]);
+    	return static::findOneCustom(['nombre_usuario' => $nombre_usuario]);
     }
 
     /**
@@ -185,7 +182,7 @@ class Identity extends \yii\base\Object implements IdentityInterface
     {
     	//return $this->password === sha1($password);//$password;
     	//return Security::validatePassword($password, $this->password_hash);
-    	return Yii::$app->getSecurity()->validatePassword($password, $this->password);
+    	return Yii::$app->getSecurity()->validatePassword($password, $this->contrasena);
     }
 
     /**
@@ -193,7 +190,7 @@ class Identity extends \yii\base\Object implements IdentityInterface
      */
     public function GetRole( $roleId = -1) {
     	$keys = [
-    			self::ROLE_COURTIER => 'Courtier',
+    			self::ROLE_CLIENTES => 'Clientes',
     			self::ROLE_ADMIN => 'Admin',
     			self::ROLE_SUPERADMIN => 'Super Admin',
     			];
@@ -209,8 +206,8 @@ class Identity extends \yii\base\Object implements IdentityInterface
     /**
      * @inheritdoc
      */
-    public function isCourtier() {
-    	if( $this->role == self::ROLE_COURTIER)
+    public function isClientes() {
+    	if( $this->role == self::ROLE_CLIENTES)
     		return true;
     	else
     		return false;

@@ -4,6 +4,8 @@ $params = require(__DIR__ . '/params_dev.php');
 
 $config = [
     'id' => 'app',
+    'name' => 'Playa de la auto',
+    'version' => '1.0',
 	// Preload the Debug Module
     'basePath' => dirname(__DIR__),
 //	'extensions' => require(__DIR__ . '/../vendor/yiisoft/extensions.php'),
@@ -34,8 +36,8 @@ $config = [
             'class' => 'yii\caching\FileCache',
         ],
         'user' => [
-            'identityClass' => 'app\models\User',
-//            'enableAutoLogin' => true,
+            'identityClass' => 'app\models\Identity',
+            'enableAutoLogin' => true,
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',

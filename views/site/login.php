@@ -36,9 +36,9 @@ $this->params['breadcrumbs'][] = $this->title;
 					        ],
 					    ]); ?>
 	                            	
-							<?= $form->field($model, 'username') ?>
+							<?= $form->field($model, 'nombre_usuario') ?>
 								
-						    <?= $form->field($model, 'password')->passwordInput() ?>
+						    <?= $form->field($model, 'contrasena')->passwordInput() ?>
 						    
 					        <?= $form->field($model, 'rememberMe')->checkbox([
 					            'template' => "<div class=\"col-lg-offset-1 col-lg-3\">{input} {label}</div>\n<div class=\"col-lg-8\">{error}</div>",

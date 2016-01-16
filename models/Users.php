@@ -3,23 +3,29 @@
 namespace app\models;
 
 use Yii;
+use yii\db\ActiveRecord;
 
 /**
- * This is the model class for table "{{%users}}".
+ * This is the model class for table "users".
  *
- * @property string $id
+ * @property integer $id
+ * @property string $nombre_usuario
+ * @property string $contrasena
+ * @property string $nombre
  * @property string $email
- * @property string $password
- * @property string $fullname
- * @property string $lang
+ * @property string $fecha_registro
+ * @property string $fecha_conexion
+ * @property string $fecha_modif
+ * @property integer $id_estado
+ * @property string $auth_key
+ * @property string $password_reset_token
+ * @property integer $role
  * @property integer $is_super_admin
- * @property integer $added_by_id
- * @property string $date_login
- * @property string $date_modify
- * @property string $date_create
- * @property integer $status_id
+ *
+ * @property Contratos[] $contratos
+ * @property Ventas[] $ventas
  */
-class Users extends \yii\db\ActiveRecord
+class Users extends ActiveRecord
 {
 	// Temporary variables
 	public $passwordConfirm = '';
@@ -29,7 +35,7 @@ class Users extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return '{{%users}}';
+        return 'users';
     }
 
     /**
@@ -38,22 +44,28 @@ class Users extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-        	// not required
-            [['is_super_admin', 'added_by_id', 'date_login', 'date_modify', 'date_create', 'status_id'], 'safe'],
-        	// required
-            [['email','password', 'fullname', 'lang'], 'required'],
-        	//default value
-        	// Validation: PHP
-            [['email'], 'email'],
-            [['password'], 'string','min' => 8, 'max' => 50],
-            [['passwordConfirm'], 'required', 'on' => 'register'],
-        	[['passwordConfirm'], 'compare', 'compareAttribute' => 'password', 'on' => 'register'],
-            [['fullname'], 'string','min' => 4, 'max' => 50],
-        	[['lang'], 'in', 'range' => ['En','Fr'], 'strict' => true],
-            [['is_super_admin', 'added_by_id'], 'integer'],
-            [['date_login', 'date_modify', 'date_create'],'date', 'format'=>'Y-MM-dd HH:mm'],
-        	// Validation : MySQL
-            [['email'], 'unique']
+			// required
+			[['nombre_usuario', 'nombre', 'email', 'fecha_registro', 'fecha_conexion', 'fecha_modif', 'id_estado', 'role', 'is_super_admin'], 'required'],
+			
+			//default value
+			
+			// Validation: PHP
+			[['contrasena', 'passwordConfirm'], 'required', 'on' => 'register'],
+			[['passwordConfirm'], 'compare', 'compareAttribute' => 'contrasena', 'skipOnEmpty' => false],
+			[['contrasena'], 'string','min' => 8, 'max' => 75],
+			[['auth_key'], 'string','min' => 8, 'max' => 32],
+			[['password_reset_token'], 'string','min' => 1, 'max' => 255],
+			
+			[['nombre_usuario','nombre'], 'string','min' => 8, 'max' => 50],
+			[['role','is_super_admin', 'id_estado'], 'integer'],
+			[['fecha_conexion', 'fecha_modif'], 'string','min' => 10, 'max' => 20],
+			[['fecha_registro'],'date', 'format'=>'yyyy-MM-dd'],
+			[['nombre_usuario','email','contrasena','nombre'], 'filter', 'filter' => 'trim'],
+			[['email'], 'email'],
+				
+			// Validation : MySQL
+			[['nombre_usuario','email'], 'unique']
+        		
         ];
     }
 
@@ -63,36 +75,94 @@ class Users extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => Yii::t('app', 'ID'),
-            'email' => Yii::t('app', 'Email'),
-            'password' => Yii::t('app', 'Password'),
-            'passwordConfirm' => Yii::t('app', 'Password Confirm'),
-            'fullname' => Yii::t('app', 'Fullname'),
-            'lang' => Yii::t('app', 'Lang'),
-            'is_super_admin' => Yii::t('app', 'Is Super Admin'),
-            'added_by_id' => Yii::t('app', 'Admin ID'),
-            'date_login' => Yii::t('app', 'Login'),
-            'date_modify' => Yii::t('app', 'Modify'),
-            'date_create' => Yii::t('app', 'Create'),
-            'status_id' => Yii::t('app', 'Status ID'),
+            'id' => 'ID',
+            'nombre_usuario' => 'Nombre Usuario',
+            'contrasena' => 'Contrasena',
+            'nombre' => 'Nombre',
+            'email' => 'Email',
+            'fecha_registro' => 'Registro',
+            'fecha_conexion' => 'Conexion',
+            'fecha_modif' => 'Modif',
+            'id_estado' => 'Estado',
+            'auth_key' => 'Auth Key',
+            'password_reset_token' => 'Password Reset Token',
+            'role' => 'Role',
+            'is_super_admin' => 'Super Admin',
         ];
     }
 
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getContratos()
+    {
+        return $this->hasMany(Contratos::className(), ['id_admin' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getVentas()
+    {
+        return $this->hasMany(Ventas::className(), ['id_admin' => 'id']);
+    }
+
+
+    // Interface methods
+    
+    /** INCLUDE USER LOGIN VALIDATION FUNCTIONS**/
+    
+    /**
+     * Generates password hash from password and sets it to the model
+     *
+     * @param string $password
+     */
+    public function setPassword($contrasena = null)
+    {
+    	$contrasena = (is_null($contrasena)) ? $this->contrasena : $contrasena;
+    	$this->contrasena = Yii::$app->getSecurity()->generatePasswordHash($contrasena); //Security::generatePasswordHash($password);//$password;
+    }
+    
+    /**
+     * Generates "remember me" authentication key
+     */
+    public function generateAuthKey()
+    {
+    	$this->auth_key = Yii::$app->getSecurity()->generateRandomString(); //Security::generateRandomKey();
+    }
+    
+    /**
+     * Generates new password reset token
+     */
+    public function generatePasswordResetToken()
+    {
+    	$this->password_reset_token = Yii::$app->getSecurity()->generateRandomString() . '_' . time(); //Security::generateRandomKey() . '_' . time();
+    }
+    
+    
+    /**
+     * Removes password reset token
+     */
+    public function removePasswordResetToken()
+    {
+    	$this->password_reset_token = null;
+    }
+    
     /**
      * @inheritdoc
      */
     public function save($runValidation = false, $attributeNames = null)
     {
     	if($this->isNewRecord) {
-	    	//$this->date_login = '0000-00-00 00:00:00';
-	    	//$this->date_modify = '0000-00-00 00:00:00';
-	    	$this->date_create = Yii::$app->fn->GetDateTime();
+    		//$this->fecha_conexion = '0000-00-00 00:00:00';
+    		//$this->fecha_modif = '0000-00-00 00:00:00';
+    		$this->fecha_registro = Yii::$app->fn->GetDateTime();
     	}
     	else {
-	    	//$this->date_login = Yii::$app->fn->GetDateTime();
-	    	$this->date_modify = Yii::$app->fn->GetDateTime();
+    		//$this->fecha_conexion = Yii::$app->fn->GetDateTime();
+    		$this->fecha_modif = Yii::$app->fn->GetDateTime();
     	}
-    	//return parent::save($runValidation, $attributeNames);
-    	return false;
+    	return parent::save($runValidation, $attributeNames);
+    	//return false;
     }
 }

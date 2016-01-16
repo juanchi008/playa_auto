@@ -7,6 +7,163 @@ use yii\base\InvalidConfigException;
 
 class Fn extends Component {
 
+	public function GetLang ($key = "all") {
+		$keys = ['en' => 'English', 'fr' => 'Français'];
+	
+		if(array_key_exists($key, $keys))
+			return $keys[$key];
+		elseif($key == 'all')
+		return $keys;
+		else
+			'N/D';
+	}
+	
+	public function GetYesNo ($key = "all") {
+		$keys = [0 => 'No', 1 => 'Yes'];
+	
+		if(array_key_exists($key, $keys))
+			return $keys[$key];
+		elseif($key == 'all')
+		return $keys;
+		else
+			'N/D';
+	}
+	
+	public function GetAdminStatus ($key = "all") {
+		$keys = [
+			1 => 'Active',
+			10 => 'Pending - E-mail validation',
+			19 => 'Pending - Other',
+			20 => 'Disabled - No more employee',
+			21 => 'Disabled - Fraud',
+			29 => 'Disabled - Other'
+		];
+	
+		if(array_key_exists($key, $keys))
+			return $keys[$key];
+		elseif($key == 'all')
+		return $keys;
+		else
+			'N/D';
+	}
+
+	public function GetCourtierStatus ($key = "all") {
+		$keys = [
+			1 => 'Active',
+			10 => 'Pending - E-mail validation',
+			19 => 'Pending - Other',
+			20 => 'Disabled - No more employee',
+			21 => 'Disabled - Fraud',
+			29 => 'Disabled - Other'
+		];
+	
+		if(array_key_exists($key, $keys))
+			return $keys[$key];
+		elseif($key == 'all')
+		return $keys;
+		else
+			'N/D';
+	}
+	public function GetBureauStatus ($key = "all") {
+		$keys = [
+			1 => 'Active',
+			10 => 'Pending',
+			20 => 'Disabled',
+		];
+	
+		if(array_key_exists($key, $keys))
+			return $keys[$key];
+		elseif($key == 'all')
+		return $keys;
+		else
+			'N/D';
+	}
+	
+
+	// ------------------------------
+	// | OUTPUT	: Msg Manipulation  |
+	// ------------------------------
+	public function ShowMsgError($var)
+	{
+		echo '<div class="systemmsg"><div class="errormsg">';
+	
+		if(is_array($var))
+		{
+			foreach($var as $key => $value)
+				echo '<p>'.$value.'</p>';
+		}
+		else
+			echo '<p>'.$value.'</p>';
+	
+		echo '</div></div>';
+	}
+	
+	public function ShowMsgSuccess($var)
+	{
+		echo '<div class="systemmsg"><div class="successmsg">';
+	
+		if(is_array($var))
+		{
+			foreach($var as $key => $value)
+				echo '<p>'.$value.'</p>';
+		}
+		else
+			echo '<p>'.$value.'</p>';
+	
+		echo '</div></div>';
+	}
+	
+	public function ShowMsgNotice($var)
+	{
+		echo '<div class="systemmsg"><div class="noticemsg">';
+	
+		if(is_array($var))
+		{
+			foreach($var as $key => $value)
+				echo '<p>'.$value.'</p>';
+		}
+		else
+			echo '<p>'.$value.'</p>';
+	
+		echo '</div></div>';
+	}
+	
+	public function ShowMsgNote($var)
+	{
+		echo '<div class="systemmsg"><div class="notemsg">';
+	
+		if(is_array($var))
+		{
+			foreach($var as $key => $value)
+				echo '<p>'.$value.'</p>';
+		}
+		else
+			echo '<p>'.$value.'</p>';
+	
+		echo '</div></div>';
+	}
+	
+	public function ShowJsAlert($var)
+	{
+		echo '<script type="text/javascript">'.
+				'alert( "Avertissement\n\n" ';
+	
+		if(is_array($var))
+		{
+			foreach($var as $key => $value)
+				echo '+ '.
+				'\''.strip_tags($value).'\''. " + \"\\n\"";
+		}
+		else
+			echo '+ '.strip_tags($value);
+	
+		echo ');'.
+				'</script>';
+	}
+
+	// ------------------------------
+	// | DEBUG	: section/tools		|
+	// ------------------------------
 	public static function PrintVar($data, $varName = '', $tabContent = '', $isPopup = false)
 	{
 		$AddTabSpace = '&nbsp; &nbsp; &nbsp; &nbsp;';
@@ -104,17 +261,6 @@ class Fn extends Component {
 			echo "$tabCar ".ucfirst(gettype($data))." => $data \n";
 	}
 
-	public function GetLang ($key = "all") {
-		$l = ['En' => 'English', 'Fr' => 'Français'];
-		
-		if($key == 'all')
-			return $l;
-		elseif(array_key_exists($key, $l))
-			return $l[$key];
-		else
-			'N/D';
-	}
-	
 	public static function GeneratePwd($str)
 	{
 		$str .= date("his");
@@ -364,14 +510,26 @@ class Fn extends Component {
 			return false;
 	}
 
-	public static function GetDateTime($precisionCode = 'min')
+	public static function GetDate($precisionCode = 'all')
 	{
-		if($precisionCode == 'sec')
-			return date("Y-m-d H:i:s");
-		elseif($precisionCode == 'ms')
-			return date("Y-m-d H:i:s");
-		else
+		if($precisionCode == 'all')
+			return date("Y-m-d");
+		elseif($precisionCode == 'y')
+			return date("Y");
+		elseif($precisionCode == 'm')
+			return date("m");
+		elseif($precisionCode == 'd')
+			return date("d");
+		elseif($precisionCode == '1970-01-01')
+			return date("N/D");
+	}
+	
+	public static function GetDateTime($precisionCode = 'ms')
+	{
+		if($precisionCode == 'min')
 			return date("Y-m-d H:i");
+		else
+			return date("Y-m-d H:i:s");
 	}
 
 	public static function GetDateFromDateTime( $dbDateTime )
@@ -495,61 +653,6 @@ class Fn extends Component {
 	{
 		list($usec, $sec) = explode(" ",microtime());
 		return ((float)$usec + (float)$sec);
-	}
-
-	// ------------------------------
-	//	|	OUTPUT	DATA Manipulation|
-	// ------------------------------
-	public static function ShowMsgError($var)
-	{
-		$errHeader = '<div class="alertBox error">';
-		$errFooter = '</div>';
-
-		if(is_array($var)) {
-			foreach($var as $key => $value)
-				echo $errHeader.$value.$errFooter;
-		}
-		else
-			echo $errHeader.$var.$errFooter;
-	}
-
-	public static function ShowMsgSuccess($var)
-	{
-		$errHeader = '<div class="alertBox success">';
-		$errFooter = '</div>';
-
-		if(is_array($var)) {
-			foreach($var as $key => $value)
-				echo $errHeader.$value.$errFooter;
-		}
-		else
-			echo $errHeader.$var.$errFooter;
-	}
-
-	public static function ShowMsgNotice($var)
-	{
-		$errHeader = '<div class="alertBox notice">';
-		$errFooter = '</div>';
-
-		if(is_array($var)) {
-			foreach($var as $key => $value)
-				echo $errHeader.$value.$errFooter;
-		}
-		else
-			echo $errHeader.$var.$errFooter;
-	}
-
-	public static function ShowMsgNote($var)
-	{
-		$errHeader = '<div class="alertBox info">';
-		$errFooter = '</div>';
-
-		if(is_array($var)) {
-			foreach($var as $key => $value)
-				echo $errHeader.$value.$errFooter;
-		}
-		else
-			echo $errHeader.$var.$errFooter;
 	}
 
 	public static function RedirectURL($url)
