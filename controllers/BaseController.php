@@ -15,6 +15,14 @@ class BaseController extends Controller
     public $successMsg	= array();
     public $jsAlert	= array();
 
+    public function beforeAction($action)
+    {
+    	//if ($action->id == 'my-method') {
+    		Yii::$app->controller->enableCsrfValidation = false;
+    
+    	return parent::beforeAction($action);
+    }
+    
     public function init() {
     	parent::init();
 

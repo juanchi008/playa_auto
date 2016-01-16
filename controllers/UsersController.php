@@ -21,7 +21,6 @@ class UsersController extends BaseController
     public function behaviors()
     {
         return [
-        		/*
             'access' => [
                 'class' => AccessControl::className(),
             	'ruleConfig' => [
@@ -39,7 +38,6 @@ class UsersController extends BaseController
                     ],
                 ],
             ],
-            */
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
