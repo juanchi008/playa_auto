@@ -59,8 +59,8 @@ class Clientes extends ActiveRecord
     {
         return [
 			// required
-			[['nombre_usuario', 'nombre', 'email', 'estado_civil', 'direccion', 'ciudad', 'provincia', 'codigo_postal', 'id_pais', 'numero_casa', 'fecha_registro', 'fecha_conexion', 'fecha_modif', 'id_estado', 'role'], 'required'],
-			
+			[['nombre_usuario', 'nombre', 'email', 'estado_civil', 'direccion', 'ciudad', 'codigo_postal', 'id_pais', 'numero_casa', 'fecha_registro', 'fecha_conexion', 'fecha_modif', 'id_estado', 'role'], 'required'],
+			[['provincia'], 'safe'],
 			//default value
 			
 			// Validation: PHP
