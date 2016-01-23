@@ -94,6 +94,7 @@ class SiteController extends BaseController
 
     public function actionContact()
     {
+    	// AJAX : see Validation
         $model = new ContactForm();
         
         return $this->render('contact', [
@@ -141,8 +142,8 @@ class SiteController extends BaseController
         	}
         }
         $msg = "";
-        $msg .= "Yii::app->request->isAjax = ".Yii::$app->request->isAjax.'<br/>';
-        $msg .= "isModelLoaded = ".$isModelLoaded.'<br/>';
+        //$msg .= "Yii::app->request->isAjax = ".Yii::$app->request->isAjax.'<br/>';
+        //$msg .= "isModelLoaded = ".$isModelLoaded.'<br/>';
         foreach ($model->errors as $errorField => $errorList) {
 
         	if ( is_string($errorList) ) {

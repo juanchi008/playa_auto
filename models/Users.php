@@ -145,7 +145,7 @@ class Users extends ActiveRecord
      */
     public function removePasswordResetToken()
     {
-    	$this->password_reset_token = null;
+    	$this->password_reset_token = '0';
     }
     
     /**
@@ -156,11 +156,11 @@ class Users extends ActiveRecord
     	if($this->isNewRecord) {
     		//$this->fecha_conexion = '0000-00-00 00:00:00';
     		//$this->fecha_modif = '0000-00-00 00:00:00';
-    		$this->fecha_registro = Yii::$app->fn->GetDateTime();
+    		$this->fecha_registro = Yii::$app->fn->GetDate();
     	}
     	else {
     		//$this->fecha_conexion = Yii::$app->fn->GetDateTime();
-    		$this->fecha_modif = Yii::$app->fn->GetDateTime();
+    		$this->fecha_modif = Yii::$app->fn->GetDate();
     	}
     	return parent::save($runValidation, $attributeNames);
     	//return false;

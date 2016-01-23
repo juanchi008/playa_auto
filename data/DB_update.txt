@@ -47,3 +47,10 @@ User login
 
 ALTER TABLE public.users ADD COLUMN nombre_usuario character varying(50);
 ALTER TABLE public.users ALTER COLUMN nombre_usuario SET NOT NULL;
+
+=====================
+2016-01-23
+Clientes
+=====================
+
+ALTER TABLE public.clientes ADD COLUMN id_provincia integer;

@@ -521,7 +521,11 @@ class Fn extends Component {
 		elseif($precisionCode == 'd')
 			return date("d");
 		elseif($precisionCode == '1970-01-01')
-			return date("N/D");
+			return "N/D";
+		elseif($precisionCode == 'none')
+			return "1970-01-01";
+		else
+			return $precisionCode;
 	}
 	
 	public static function GetDateTime($precisionCode = 'ms')

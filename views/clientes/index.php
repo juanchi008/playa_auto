@@ -25,9 +25,9 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
-            'nombre_usuario',
-            'contrasena',
+            //'id',
+            //'nombre_usuario',
+            //'contrasena',
             'nombre',
             'email:email',
             // 'estado_civil',
@@ -39,13 +39,23 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'codigo_postal',
             // 'id_pais',
             // 'numero_casa',
-            // 'numero_trabajo',
+             'numero_trabajo',
             // 'numero_movil',
             // 'cargo_trabajo',
-            // 'fecha_registro',
+			[
+				'attribute' => 'fecha_registro',
+				'value' => function ($data) {
+					return Yii::$app->fn->GetDateFromDateTime($data->fecha_registro);
+				}
+			],
             // 'fecha_conexion',
             // 'fecha_modif',
-            // 'id_estado',
+			[
+				'attribute' => 'id_estado',
+				'value' => function ($data) {
+					return Yii::$app->fn->GetAdminStatus($data->id_estado);
+				}
+			],
             // 'password_reset_token',
             // 'role',
             // 'auth_key',

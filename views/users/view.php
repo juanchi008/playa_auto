@@ -49,8 +49,14 @@ $this->params['breadcrumbs'][] = 'Info';
 				'value' => Yii::$app->fn->GetAdminStatus($model->id_estado),
 			],
             'fecha_registro',
-            'fecha_conexion',
-            'fecha_modif',
+			[
+				'label' => $model->getAttributeLabel('fecha_conexion'),
+				'value' => Yii::$app->fn->GetDate($model->fecha_conexion),
+			],
+			[
+				'label' => $model->getAttributeLabel('fecha_modif'),
+				'value' => Yii::$app->fn->GetDate($model->fecha_modif),
+			],
         ],
     ]) ?>
 

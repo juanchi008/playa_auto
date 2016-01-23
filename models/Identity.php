@@ -110,7 +110,7 @@ class Identity extends \yii\base\Object implements IdentityInterface
     /**
      * Finds user by username
      *
-     * @param  string      $username
+     * @param  string      $nombre_usuario
      * @return static|null
      */
     public static function findByUsername($nombre_usuario)

@@ -52,4 +52,15 @@ class Paises extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Usuarios::className(), ['id_pais' => 'id']);
     }
+
+    public static function findAllForDropDownList() {
+    	$models = Paises::find()->orderBy('nombre_pais')->all();
+    	$listData = [];
+    
+    	foreach($models as $model) {
+    		if(intval($model->id) )
+    			$listData[$model->id] = $model->nombre_pais;
+    	}
+    	return $listData;
+    }
 }

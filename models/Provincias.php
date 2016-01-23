@@ -29,10 +29,9 @@ class Provincias extends \yii\db\ActiveRecord
     {
         return [
             [['nombre_provincia'], 'required'],
-		[['nombre_provincia'], 'unique'],
+			[['nombre_provincia'], 'unique'],
+            [['nombre_provincia'], 'string', 'max' => 50],
             [['id'], 'integer'],
-            [['nombre_provincia'], 'string', 'max' => 50]
-
         ];
     }
 
@@ -53,5 +52,16 @@ class Provincias extends \yii\db\ActiveRecord
     public function getUsuarios()
     {
         return $this->hasMany(Usuarios::className(), ['id_provincia' => 'id']);
+    }
+
+    public static function findAllForDropDownList() {
+    	$models = Provincias::find()->orderBy('nombre_provincia')->all();
+    	$listData = [];
+    
+    	foreach($models as $model) {
+    		if(intval($model->id) )
+    			$listData[$model->id] = $model->nombre_provincia;
+    	}
+    	return $listData;
     }
 }

@@ -53,10 +53,10 @@ class UsersController extends BaseController
      */
     public function actionIndex()
     {
-    	/*
+    	
     	if(\Yii::$app->user->isGuest || !\Yii::$app->user->identity->isAdmin() )
     		throw new ForbiddenHttpException('You are not allowed to access this page.');
-    	*/
+    	
         $searchModel = new UsersSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -95,8 +95,8 @@ class UsersController extends BaseController
         	// Default value
         	$model->is_super_admin = (isset($post[$formName]['is_super_admin']) ) ? $post[$formName]['is_super_admin'] : 0;
         	$model->role = ($model->is_super_admin) ? Identity::ROLE_SUPERADMIN : 30;
-        	$model->fecha_conexion = (isset($post[$formName]['fecha_conexion']) ) ? $post[$formName]['fecha_conexion'] : '1970-01-01';
-        	$model->fecha_modif = (isset($post[$formName]['fecha_modif']) ) ? $post[$formName]['fecha_modif'] : '1970-01-01';
+        	$model->fecha_conexion = (isset($post[$formName]['fecha_conexion']) ) ? $post[$formName]['fecha_conexion'] : Yii::$app->fn->GetDate('none');
+        	$model->fecha_modif = (isset($post[$formName]['fecha_modif']) ) ? $post[$formName]['fecha_modif'] : Yii::$app->fn->GetDate('none');
         	$model->fecha_registro = (isset($post[$formName]['fecha_registro']) ) ? $post[$formName]['fecha_registro'] : Yii::$app->fn->GetDate();
         	$model->id_estado = (isset($post[$formName]['id_estado']) ) ? $post[$formName]['id_estado'] : 1;
         	
@@ -136,7 +136,7 @@ class UsersController extends BaseController
         	$model->fecha_modif = Yii::$app->fn->GetDate();
         	$model->id_estado = (isset($post[$formName]['id_estado']) ) ? $post[$formName]['id_estado'] : 1;
         	if($model->contrasena != $model->passwordConfirm)
-        		$model->addError($model->contrasenaConfirm, 'Password Confirm must be repeated exactly.' );
+        		$model->addError($model->passwordConfirm, 'Password Confirm must be repeated exactly.' );
         	
 	        if ( !count($model->errors) && $model->validate() ) {
 	        	if($model->contrasena == '') {

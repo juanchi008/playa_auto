@@ -10,6 +10,9 @@ $this->title = 'Create Clientes';
 $this->params['breadcrumbs'][] = ['label' => 'Clientes', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+<section id="content">
+<div class="container">
+
 <div class="clientes-create">
 
     <h1><?= Html::encode($this->title) ?></h1>
@@ -18,4 +21,8 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
     ]) ?>
 
+</div>
+
+</div>
+</section>
 </div>
