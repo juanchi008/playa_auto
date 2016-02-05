@@ -25,7 +25,7 @@ SET default_with_oids = false;
 -- TOC entry 196 (class 1259 OID 16553)
 -- Name: autos; Type: TABLE; Schema: public; Owner: root
 --
-
+DROP TABLE IF EXISTS autos;
 CREATE TABLE autos (
     id integer NOT NULL,
     marca character varying(50) NOT NULL,

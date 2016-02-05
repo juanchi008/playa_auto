@@ -54,3 +54,12 @@ Clientes
 =====================
 
 ALTER TABLE public.clientes ADD COLUMN id_provincia integer;
+
+=====================
+2016-01-31
+Clientes
+=====================
+ALTER TABLE public.autos ADD COLUMN id_admin integer;
+ALTER TABLE public.autos ALTER COLUMN id_admin SET NOT NULL;
+ALTER TABLE public.autos ALTER COLUMN id_admin SET DEFAULT 1;
+
