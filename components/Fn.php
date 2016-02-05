@@ -110,7 +110,7 @@ class Fn extends Component {
 		}
 			
 		if (@unlink($filePath) ) {
-			$errorMsg .= "Error: is not a file: $filePath<br/>";
+			$errorMsg .= "Error: unable to delete file: $filePath<br/>";
 		}
 		
 		if(!empty($errorMsg)) {

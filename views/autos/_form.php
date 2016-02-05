@@ -20,7 +20,7 @@ use app\models\Users;
 	
     	<?php echo $form->field($model, 'id_admin')->dropdownList(
 	    		Users::findAllForDropDownList(),
-	    		['prompt'=>'--- Select Status ---']
+	    		['prompt'=>'--- Select  ---']
     		); ?>
     		
 	    <?php echo $form->field($model, 'marca')->textInput(['maxlength' => true]); ?>
