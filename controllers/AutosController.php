@@ -5,29 +5,62 @@ namespace app\controllers;
 use Yii;
 use app\models\Autos;
 use app\models\AutosSearch;
-use yii\web\Controller;
-use yii\web\NotFoundHttpException;
+
+use app\models\Identity;
+use app\components\AccessRule;
+use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
+use app\controllers\BaseController;
+use yii\web\NotFoundHttpException;
+
+use app\models\UploadForm;
+use yii\web\UploadedFile;
+use app\components\Fn;
 
 /**
  * AutosController implements the CRUD actions for Autos model.
  */
-class AutosController extends Controller
+class AutosController extends BaseController
 {
 	/**
 	 * @inheritdoc
 	 */
 	public function beforeAction($action)
 	{
-		$csrfActionList = [
-			'delete' => false,
-		];
-		
-		if ( array_key_exists($action->id, $csrfActionList)) {
-			Yii::$app->controller->enableCsrfValidation = $csrfActionList[$action->id];
-		}
-	
-		return parent::beforeAction($action);
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+            	'ruleConfig' => [
+            		'class' => AccessRule::className(),
+            	],
+                'only' => ['index','view', 'create', 'update', 'delete', 'catalogo', 'catalogoajax'],
+                'rules' => [
+                    [
+                        'actions' => ['view', 'update', 'index','create', 'delete', 'upload' ],
+                        'allow' => true,
+                        'roles' => [
+                        	Identity::ROLE_ADMIN,
+                        	Identity::ROLE_SUPERADMIN
+                        ],
+                    ],
+                    [
+                        'actions' => [ 'catalogo', 'catalogoajax' ],
+                        'allow' => true,
+                        'roles' => [
+                        	Identity::ROLE_CLIENTES,
+                        	Identity::ROLE_ADMIN,
+                        	Identity::ROLE_SUPERADMIN
+                        ],
+                    ],
+                ],
+            ],
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'delete' => ['post'],
+                ],
+            ],
+        ];
 	}
 	
     public function behaviors()
@@ -81,12 +114,8 @@ class AutosController extends Controller
         //$model = $this->findModel(7);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            //return $this->redirect(['view', 'id' => $model->id]);
-        	$msg = "New car added success.";
+            return $this->redirect(['view', 'id' => $model->id]);
         } 
-        else {
-        	$msg = "New car validation failed.";
-        }
         return $this->render('create', [
             'model' => $model,
            	'msg' => $msg,
@@ -105,13 +134,103 @@ class AutosController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
-        }
+        } 
+        
+        return $this->render('update', [
+            'model' => $model,
+        ]);
     }
 
+    /**
+     * Upload a new Autos picture.
+     * If upload is successful, the browser will be redirected to the 'view' page.
+     * @return mixed
+     */
+    public function actionUpload($id)
+    {
+        $model = $this->findModel($id);
+        $upload = new UploadForm();
+        $errorMsg = "";
+        $successMsg = "";
+
+        /*
+        if ($upload->load(Yii::$app->request->post()) && $upload->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
+        } 
+        */
+        if (Yii::$app->request->isPost) {
+        	
+        	$upload->file = UploadedFile::getInstance($upload, 'file');
+        	
+        	if ($upload->file && $upload->validate()) {
+        		
+        		$dirPath = \Yii::$app->fn->GetUploadedDir ("autos").'/' . $model->id;
+        		$filename = $upload->file->baseName . '.' . $upload->file->extension;
+        		$filePath = $dirPath.'/'.$filename;
+
+        		/*
+        		Fn::PrintVar($upload, 'upload');
+        		Fn::PrintVar($dirPath, 'dirPath');
+        		Fn::PrintVar($filename, 'filename');
+        		Fn::PrintVar($filePath, 'filePath');
+        		*/
+        		// CHECK file extension
+        		if (empty($errorMsg) && !$upload->isImage($upload->file->extension) )
+        			$errorMsg .= "Error: invalid file type selected.<br/>";
+        		
+        		// CREATE folder/subfolders if not exists
+        		if (empty($errorMsg) && !is_dir($dirPath))
+        			if (!mkdir($dirPath, 0777, true) )
+        				$errorMsg .= "Error: unable to create folder at location : $dirPath<br/>";
+
+        		// DELETE file if exists
+        		if (empty($errorMsg) && file_exists($filePath)) {
+        			if(!unlink($filePath))
+        				$errorMsg .= "Error: unable to delete the previous file with the same name at location : $filePath<br/>";
+        		}
+        		
+        		// SAVE uploaded file to local folder
+        		if (empty($errorMsg) ) {
+        			if (!$upload->file->saveAs($filePath, true) ) {
+        				$errorMsg .= "Error: unable to save the file at location : $filePath<br/>";
+        			}
+        			else {
+        				if(empty($model->img) ) { 
+        					$model->img = \Yii::$app->homeUrl.$filePath;
+        					$model->save();
+        				}
+        				$successMsg .= "File : $filename upload success !<br/>";
+        			}
+        		}
+        		
+        	}
+        }
+        return $this->render('upload', [
+            'model' 		=> $model,
+           	'upload'		=> $upload,
+        	'errorMsg' 		=> $errorMsg,
+        	'successMsg' 	=> $successMsg,
+        ]);
+    }
+
+    /**
+     * Deletes an existing file uploaded.
+     * If deletion is successful, the browser will be redirected to the 'index' page.
+     * @param integer $id
+     * @return mixed
+     */
+    public function actionDeleteuploadedfiles($id, $filePath)
+    {
+    	if (Yii::$app->request->isPost) {
+	    	$model = $this->findModel($id);
+	    	
+	    	if( $model->img != $filePath) {
+	    		\Yii::$app->fn->DeleteUploadedFiles($filePath);
+	    	}
+    	}
+    	return $this->redirect(['update', 'id' => $model->id]);
+    }
+    
     /**
      * Deletes an existing Autos model.
      * If deletion is successful, the browser will be redirected to the 'index' page.

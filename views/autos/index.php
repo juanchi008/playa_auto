@@ -25,20 +25,30 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+            //'id',
             'marca',
             'modelo',
             'ano',
-            'color',
+            //'color',
             // 'no_motor',
             // 'matricula_auto',
             // 'no_chassis',
             // 'observaciones',
             // 'kilometraje',
             // 'no_chapa',
-            // 'precio',
-            // 'fecha_registro',
-            // 'id_estado',
+			[
+				'attribute' => 'precio',
+				'value' => function ($data) {
+					return number_format($data->precio, 0,',', '.'). ' $';
+				}
+			],
+            'fecha_registro',
+			[
+				'attribute' => 'id_estado',
+				'value' => function ($data) {
+					return Yii::$app->fn->GetAutoStatus($data->id_estado);
+				}
+			],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

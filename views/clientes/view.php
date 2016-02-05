@@ -21,6 +21,7 @@ $this->params['breadcrumbs'][] = 'Info';
 
     <p>
         <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('PDF', ['viewpdf', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Delete', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
@@ -43,7 +44,7 @@ $this->params['breadcrumbs'][] = 'Info';
             'password_reset_token',
 			[
 				'label' => $model->getAttributeLabel('id_estado'),
-				'value' => Yii::$app->fn->GetAdminStatus($model->id_estado),
+				'value' => Yii::$app->fn->GetClienteStatus($model->id_estado),
 			],
             'estado_civil',
 			'numero_oficina',

@@ -47,7 +47,7 @@ class Fn extends Component {
 			'N/D';
 	}
 
-	public function GetCourtierStatus ($key = "all") {
+	public function GetClienteStatus ($key = "all") {
 		$keys = [
 			1 => 'Active',
 			10 => 'Pending - E-mail validation',
@@ -64,10 +64,11 @@ class Fn extends Component {
 		else
 			'N/D';
 	}
-	public function GetBureauStatus ($key = "all") {
+	public function GetAutoStatus ($key = "all") {
 		$keys = [
-			1 => 'Active',
+			1 => 'Buy',
 			10 => 'Pending',
+			15 => 'Sold',
 			20 => 'Disabled',
 		];
 	
@@ -75,6 +76,61 @@ class Fn extends Component {
 			return $keys[$key];
 		elseif($key == 'all')
 		return $keys;
+		else
+			'N/D';
+	}
+	
+	function GetUploadedFiles($dirname)
+	{
+		$files = [];
+		if(is_dir($dirname."/.")) {
+			$dir = opendir($dirname."/.");
+			while($item = readdir($dir)) {
+				$file = $dirname."/".$item;
+			
+				if(is_file($file)) {
+					$files[\Yii::$app->homeUrl.$file] = \Yii::$app->homeUrl.$file;
+				}
+			}
+			closedir($dir);
+		}
+		return($files);
+	}
+	function DeleteUploadedFiles($filePath)
+	{
+		$filePath = \Yii::getAlias('@webroot').$filePath;
+		//Fn::PrintVar(\Yii::getAlias('@webroot'), '\Yii::app->aliases');
+		$errorMsg = '';
+		
+		if(!file_exists($filePath) ) {
+			$errorMsg .= "Error: file not found: $filePath<br/>";
+		}
+		if(is_file($filePath)) {
+			$errorMsg .= "Error: is not a file: $filePath<br/>";
+		}
+			
+		if (@unlink($filePath) ) {
+			$errorMsg .= "Error: is not a file: $filePath<br/>";
+		}
+		
+		if(!empty($errorMsg)) {
+			echo $errorMsg;
+			//exit;
+			return false;
+		}
+		else
+			return true;
+	}
+	public function GetUploadedDir ($module = "all") {
+		$keys = [
+			'autos' 	=> 'files/autos',
+			'clientes' 	=> 'files/autos',
+		];
+	
+		if(array_key_exists($module, $keys))
+			return $keys[$module];
+		elseif($module == 'all')
+			return $keys;
 		else
 			'N/D';
 	}

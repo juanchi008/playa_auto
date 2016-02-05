@@ -107,6 +107,16 @@ class Users extends ActiveRecord
         return $this->hasMany(Ventas::className(), ['id_admin' => 'id']);
     }
 
+    public static function findAllForDropDownList() {
+    	$models = Users::find()->orderBy('nombre')->all();
+    	$listData = [];
+    
+    	foreach($models as $model) {
+    		if(intval($model->id) )
+    			$listData[$model->id] = $model->nombre;
+    	}
+    	return $listData;
+    }
 
     // Interface methods
     

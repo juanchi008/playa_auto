@@ -18,8 +18,17 @@ class BaseController extends Controller
     public function beforeAction($action)
     {
     	//if ($action->id == 'my-method') {
-    		Yii::$app->controller->enableCsrfValidation = false;
-    
+    	Yii::$app->controller->enableCsrfValidation = false;
+
+    	/*
+    	$csrfActionList = [
+    		'delete' => false,
+    	];
+    		
+    	if ( array_key_exists($action->id, $csrfActionList)) {
+    		Yii::$app->controller->enableCsrfValidation = $csrfActionList[$action->id];
+    	}
+    	*/
     	return parent::beforeAction($action);
     }
     

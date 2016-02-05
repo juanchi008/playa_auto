@@ -129,7 +129,12 @@ $this->params['breadcrumbs'][] = $this->title;
                         <div class="element-item col-lg-4 c1">
                             <div class="box_7">
                                 <div class="img-wrap">
-                                    <img src="../../images/index-2_img01.jpg" alt="Image 1"/>
+                                    <?php 
+                                    	if( !empty($model->img) )
+                                    		echo '<img src="'.$model->img.'" width="370" alt="Image 1"/>';
+                                    	else
+                                    		echo '<img src="../../images/index-2_img01.jpg"  width="370" height="270"  alt="Image 1"/>';
+                                    ?>
                                     
                                     
                                 </div>
@@ -140,7 +145,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                         <span style="font-weight: bold;">Color:</span> <?php echo $model->color; ?><br/>
                                         <span style="font-weight: bold;">observaciones:</span> <?php echo $model->observaciones; ?><br/>
                                         <span style="font-weight: bold;">kilometraje:</span> <?php echo $model->kilometraje; ?><br/>
-                                        <span style="font-weight: bold;">Precio:</span> <?php echo number_format($model->precio, 0, '.', '.'); ?> $
+                                        <span style="font-weight: bold;">Precio:</span> <?php echo number_format($model->precio, 0, ',', '.'); ?> $
                                     </p>
                                     <a class="btn_2" href="#">Más Detalles</a>
                                  </div>

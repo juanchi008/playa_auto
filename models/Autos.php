@@ -25,6 +25,7 @@ use Yii;
  * @property Estados $idEstado
  * @property Contratos[] $contratos
  * @property Ventas[] $ventas
+ * @property Users[] $idAdmin
  */
 class Autos extends \yii\db\ActiveRecord
 {
@@ -42,12 +43,13 @@ class Autos extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['marca', 'modelo', 'ano', 'color', 'no_motor', 'matricula_auto', 'no_chassis', 'observaciones', 'kilometraje', 'no_chapa', 'precio', 'id_estado'], 'required'],
-            [['id', 'precio', 'id_estado'], 'integer'],
-            [['fecha_registro'], 'safe'],
+            [['marca', 'modelo', 'ano', 'color', 'no_motor', 'matricula_auto', 'no_chassis', 'observaciones', 'kilometraje', 'no_chapa', 'precio', 'id_estado', 'id_admin'], 'required'],
+            [['id', 'precio', 'id_estado', 'id_admin'], 'integer'],
+            [['fecha_registro'], 'string','min' => 10, 'max' => 20],
             [['id'], 'safe', 'on' => 'register'],
             [['marca', 'modelo', 'color', 'no_motor', 'matricula_auto', 'no_chassis', 'observaciones', 'kilometraje', 'no_chapa'], 'string', 'max' => 50],
-            [['ano'], 'string', 'max' => 4]
+            [['ano'], 'string', 'max' => 4],
+            [['img'], 'string', 'max' => 256]
         ];
     }
 
@@ -63,14 +65,16 @@ class Autos extends \yii\db\ActiveRecord
             'ano' => 'Ano',
             'color' => 'Color',
             'no_motor' => 'No Motor',
-            'matricula_auto' => 'Matricula Auto',
+            'matricula_auto' => 'Matricula',
             'no_chassis' => 'No Chassis',
             'observaciones' => 'Observaciones',
             'kilometraje' => 'Kilometraje',
             'no_chapa' => 'No Chapa',
             'precio' => 'Precio',
-            'fecha_registro' => 'Fecha Registro',
-            'id_estado' => 'Id Estado',
+            'fecha_registro' => 'Registro',
+            'id_estado' => 'Estado',
+            'id_admin' => 'Admin',
+            'img' => 'Foto (por defecto)',
         ];
     }
 
@@ -98,6 +102,27 @@ class Autos extends \yii\db\ActiveRecord
         return $this->hasMany(Ventas::className(), ['id_auto' => 'id']);
     }
 
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getIdAdmin()
+    {
+    	return $this->hasOne(Estados::className(), ['id' => 'id_admin']);
+    }
+    public function getAdmin()
+    {
+        return Users::findOne( ['id' => $this->id_admin])->nombre;
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function GetUploadedPictures()
+    {
+    	$dirPath = \Yii::$app->fn->GetUploadedDir("autos").'/' . $this->id;
+    	return  \Yii::$app->fn->GetUploadedFiles($dirPath);
+    }
+    
     /**
      * @return PHP_ARRAY_ASSOC
      */

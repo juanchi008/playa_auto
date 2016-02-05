@@ -53,7 +53,7 @@ $this->params['breadcrumbs'][] = $this->title;
 			[
 				'attribute' => 'id_estado',
 				'value' => function ($data) {
-					return Yii::$app->fn->GetAdminStatus($data->id_estado);
+					return Yii::$app->fn->GetClienteStatus($data->id_estado);
 				}
 			],
             // 'password_reset_token',

@@ -27,7 +27,7 @@ class ClientesController extends BaseController
             	'ruleConfig' => [
             		'class' => AccessRule::className(),
             	],
-                'only' => ['index','view', 'create', 'update', 'delete'],
+                'only' => ['index','view', 'create', 'update', 'delete', 'viewpdf'],
                 'rules' => [
                     [
                         'actions' => ['index','create', 'delete' ],
@@ -38,7 +38,7 @@ class ClientesController extends BaseController
                         ],
                     ],
                     [
-                        'actions' => ['view', 'update' ],
+                        'actions' => ['view', 'update', 'viewpdf' ],
                         'allow' => true,
                         'roles' => [
                         	Identity::ROLE_CLIENTES,
@@ -85,6 +85,20 @@ class ClientesController extends BaseController
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
+    }
+
+    /**
+     * Displays a single Clientes model.
+     * @param integer $id
+     * @return mixed
+     */
+    public function actionViewpdf($id)
+    {
+    	\Yii::$app->response->format = 'pdf';
+    	
+    	return $this->render('view', [
+    		'model' => $this->findModel($id),
+    	]);
     }
 
     /**
