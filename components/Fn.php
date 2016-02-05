@@ -134,7 +134,40 @@ class Fn extends Component {
 		else
 			'N/D';
 	}
+
+	public function GetLogText ($module = null, $submodule = null, $msgKey = null ) {
+		$modules = [
+			'login'	=> [
+				'pagina' => [
+					'errorPwd' 				=> 'Wrong password',
+					'errorUsername' 		=> 'Wrong username',
+					'exito' 				=> 'Exito',
+				],
+				'cookie' => [
+					'errorKey' 				=> 'Wrong cookie key',
+					'success' 				=> 'Exito',
+				],
+			],
+			'autos'	=> [
+				'crear' => [
+					'exito' 				=> 'Exito',
+				],
+				'update' => [
+					'errorKey' 				=> 'Wrong cookie key',
+					'exito' 				=> 'Exito',
+				],
+			],
+		];
 	
+		if(is_null($module))
+			return $modules;
+		elseif (is_null($submodule))
+			return $modules[$module];
+		elseif (is_null($msgKey))
+			return $modules[$module][$submodule];
+		else
+			return $modules[$module][$submodule][$msgKey];
+	}
 
 	// ------------------------------
 	// | OUTPUT	: Msg Manipulation  |

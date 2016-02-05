@@ -188,17 +188,20 @@ class Identity extends \yii\base\Object implements IdentityInterface
     /**
      * @inheritdoc
      */
-    public function GetRole( $roleId = -1) {
+    public function GetRole( $roleId = -1, $currentUser = true) {
     	$keys = [
-    			self::ROLE_CLIENTES => 'Clientes',
-    			self::ROLE_ADMIN => 'Admin',
-    			self::ROLE_SUPERADMIN => 'Super Admin',
-    			];
+    		self::ROLE_CLIENTES => 'Clientes',
+    		self::ROLE_ADMIN => 'Admin',
+    		self::ROLE_SUPERADMIN => 'Super Admin',
+    	];
+    	
+    	if ($currentUser)
+    		$roleId = $this->role;
     
     	if(array_key_exists($roleId, $keys))
     		return $keys[$roleId];
-    	elseif($roleId == -1)
-    	return $keys;
+    	elseif($roleId == -1 || is_null($roleId))
+    		return $keys;
     	else
     		'N/D';
     }

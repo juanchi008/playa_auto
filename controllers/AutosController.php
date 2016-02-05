@@ -16,6 +16,7 @@ use yii\web\NotFoundHttpException;
 use app\models\UploadForm;
 use yii\web\UploadedFile;
 use app\components\Fn;
+use app\models\Logs;
 
 /**
  * AutosController implements the CRUD actions for Autos model.
@@ -133,6 +134,16 @@ class AutosController extends BaseController
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+
+        	Logs::Add(
+	        	\Yii::$app->user->Identity->nombre.' | '.\Yii::$app->user->Identity->id,
+	        	\Yii::$app->user->Identity->GetRole(null, true),
+	        	'autos',
+	        	'crear',
+	        	'exito',
+	        	\Yii::$app->fn->GetLogText ('autos', 'crear', 'exito' )
+        	);
+        	
             return $this->redirect(['view', 'id' => $model->id]);
         } 
         
