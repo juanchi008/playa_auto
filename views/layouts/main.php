@@ -74,23 +74,22 @@ AppAsset::register($this);
 	                        }
 	                        else {
 								?>
-								<li><a href="#">Mi Cuenta</a>
-									<ul>
-										<li><a href="<?php echo Yii::$app->homeUrl; ?>autos/create">Vender mi auto</a></li>
-										<!-- <li><a href="<?php echo Yii::$app->homeUrl; ?>autos">Manage my cars sold</a>  -->
-									</ul>
-								<li>
+    							<?php if( !Yii::$app->user->Identity->isAdmin()) {?>
+									<li><a href="<?php echo Yii::$app->homeUrl; ?>clientes/view?id=<?php echo Yii::$app->user->Identity->id; ?>" >Mi Cuenta</a></li>
+    							<?php }?>
 								<li><a href="#">Administracion</a>
 									<ul>
 									<li><a href="<?php echo Yii::$app->homeUrl; ?>users">Admins/</a></li>
 									<li><a href="<?php echo Yii::$app->homeUrl; ?>autos">Autos/index</a>
+									<li><a href="<?php echo Yii::$app->homeUrl; ?>paises">Paises</a>
+									<li><a href="<?php echo Yii::$app->homeUrl; ?>clientes">Clientes</a>
+									<li><a href="<?php echo Yii::$app->homeUrl; ?>logs">Logs</a>
+									<!--  
+									<li><a href="<?php echo Yii::$app->homeUrl; ?>provincias">Provincias</a>
 									<li><a href="<?php echo Yii::$app->homeUrl; ?>contratos">Contratos</a>
 									<li><a href="<?php echo Yii::$app->homeUrl; ?>estados">Estados</a>
 									<li><a href="<?php echo Yii::$app->homeUrl; ?>formsDatos">Forms Datos</a>
-									<li><a href="<?php echo Yii::$app->homeUrl; ?>paises">Paises</a>
-									<li><a href="<?php echo Yii::$app->homeUrl; ?>provincias">Provincias</a>
-									<li><a href="<?php echo Yii::$app->homeUrl; ?>clientes">Clientes</a>
-									<li><a href="<?php echo Yii::$app->homeUrl; ?>ventas">Ventas</a>
+									-->
 									</ul>
 								<li>
 								

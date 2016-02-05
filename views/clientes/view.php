@@ -21,14 +21,16 @@ $this->params['breadcrumbs'][] = 'Info';
 
     <p>
         <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('PDF', ['viewpdf', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ]) ?>
+    	<?php if( Yii::$app->user->Identity->isAdmin()) {?>
+	        <?= Html::a('PDF', ['viewpdf', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+	        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
+	            'class' => 'btn btn-danger',
+	            'data' => [
+	                'confirm' => 'Are you sure you want to delete this item?',
+	                'method' => 'post',
+	            ],
+	        ]) ?>
+    	<?php }?>
     </p>
 
     <?= DetailView::widget([

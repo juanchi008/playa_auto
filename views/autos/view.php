@@ -32,10 +32,10 @@ if(Yii::$app->user->Identity->isAdmin()){
                 'method' => 'post',
             ],
         ]) ?>
-    <?php } elseif(Yii::$app->user->Identity->isCliente()) {?>
+    <?php } /*elseif(Yii::$app->user->Identity->isCliente()) {?>
         <?= Html::a('Reservar', ['reservar', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
     
-    <?php } ?>
+    <?php } */?>
     </p>
 
     <?= DetailView::widget([
