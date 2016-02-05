@@ -72,6 +72,12 @@ if(Yii::$app->user->Identity->isAdmin()){
         ],
     ]) ?>
     
+    <?php if(Yii::$app->user->Identity->isCliente()) {?>
+        <?= Html::a('Reservar', ['reservar', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= "<br/>" ?>
+    
+    <?php } ?>
+    
 		<?php 
 			$files = $model->GetUploadedPictures();
 			
