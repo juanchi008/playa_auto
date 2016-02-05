@@ -1,5 +1,5 @@
 <?php
-
+//use yii;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
@@ -7,19 +7,22 @@ use yii\widgets\DetailView;
 /* @var $model app\models\Autos */
 
 $this->title = $model->marca.' '.$model->modelo.' '.$model->ano;
-$this->params['breadcrumbs'][] = ['label' => 'Autos', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = ['label' => $this->title, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Info';
+if(Yii::$app->user->Identity->isAdmin()){
+	$this->params['breadcrumbs'][] = ['label' => 'Autos', 'url' => ['index']];
+	$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
+	$this->params['breadcrumbs'][] = ['label' => $this->title, 'url' => ['view', 'id' => $model->id]];
+	$this->params['breadcrumbs'][] = 'Info';
+}
 ?>
 <section id="content">
 <div class="container">
 
 <div class="autos-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h2 class="header_2 indent_4"><?= Html::encode($this->title) ?></h2>
 
     <p>
+    <?php if(Yii::$app->user->Identity->isAdmin()) {?>
         <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Upload Foto', ['upload', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Delete', ['delete', 'id' => $model->id], [
@@ -29,6 +32,10 @@ $this->params['breadcrumbs'][] = 'Info';
                 'method' => 'post',
             ],
         ]) ?>
+    <?php } elseif(Yii::$app->user->Identity->isCliente()) {?>
+        <?= Html::a('Reservar', ['reservar', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+    
+    <?php } ?>
     </p>
 
     <?= DetailView::widget([
@@ -49,7 +56,10 @@ $this->params['breadcrumbs'][] = 'Info';
             'observaciones',
             'kilometraje',
             'no_chapa',
-            'precio',
+			[
+				'label' => $model->getAttributeLabel('precio'),
+				'value' => number_format($model->precio, 0, '.', '.'),
+				],
             'fecha_registro',
 			[
 				'label' => $model->getAttributeLabel('id_estado'),

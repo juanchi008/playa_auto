@@ -111,16 +111,22 @@ class AutosSearch extends Autos
     	if(count($models)) {
     		
     		$html ="";
+
     		
 			foreach($models as $model) {
 				
 			 	$precio = number_format($model->precio, 0, '.', '.');
+
+			 	if( !empty($model->img) )
+			 		$img = '<img src="'.$model->img.'" width="370" alt="Image 1"/>';
+			 	else
+			 		$img = '<img src="../../images/index-2_img01.jpg"  width="370" height="270"  alt="Image 1"/>';
 			 	
 			 	$temp = <<<EOD
 				<div class="element-item grid_4 c1">
 					<div class="box_7">
 						<div class="img-wrap">
-							<img src="../../images/index-2_img01.jpg" alt="Image 1"/>
+							{$img}
 						</div>
 						<div class="caption">
 							<h3 class="text_2 color_2"><a href="#">{$model->marca} - {$model->modelo}</a></h3>

@@ -139,7 +139,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     
                                 </div>
                                 <div class="caption">
-                                    <h3 class="text_2 color_2"><a href="#"><?php echo $model->marca.' - '.$model->modelo; ?></a></h3>
+                                    <h3 class="text_2 color_2"><?= Html::a($model->marca.' - '.$model->modelo, ['view', 'id' => $model->id]) ?></h3>
                                     <p class="text_3">
                                         <span style="font-weight: bold;">Ano:</span> <?php echo $model->ano; ?><br/>
                                         <span style="font-weight: bold;">Color:</span> <?php echo $model->color; ?><br/>
@@ -147,7 +147,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                         <span style="font-weight: bold;">kilometraje:</span> <?php echo $model->kilometraje; ?><br/>
                                         <span style="font-weight: bold;">Precio:</span> <?php echo number_format($model->precio, 0, ',', '.'); ?> $
                                     </p>
-                                    <a class="btn_2" href="#">Más Detalles</a>
+                                    <?= Html::a('Más Detalles', ['view', 'id' => $model->id], ['class' => 'btn_2']) ?>
                                  </div>
                                  <!-- <a class="btn_2" href="#">Reservar</a></div>-->
                             </div>

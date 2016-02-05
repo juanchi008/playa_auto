@@ -206,7 +206,7 @@ class Identity extends \yii\base\Object implements IdentityInterface
     /**
      * @inheritdoc
      */
-    public function isClientes() {
+    public function isCliente() {
     	if( $this->role == self::ROLE_CLIENTES)
     		return true;
     	else

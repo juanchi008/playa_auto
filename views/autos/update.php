@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = 'Update';
 
 <div class="autos-update">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h2 class="header_2 indent_4"><?= Html::encode($this->title) ?></h2>
 
     <p>
         <?= Html::a('Upload Foto', ['upload', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
