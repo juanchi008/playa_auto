@@ -115,6 +115,14 @@ class AutosController extends BaseController
         //$model = $this->findModel(7);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        	Logs::Add(
+	        	\Yii::$app->user->Identity->nombre.' | '.\Yii::$app->user->Identity->id,
+	        	\Yii::$app->user->Identity->GetRole(null, true),
+	        	'autos',
+	        	'crear',
+	        	'exito',
+	        	\Yii::$app->fn->GetLogText ('autos', 'crear', 'exito' )
+        	);
             return $this->redirect(['view', 'id' => $model->id]);
         } 
         return $this->render('create', [
@@ -139,9 +147,9 @@ class AutosController extends BaseController
 	        	\Yii::$app->user->Identity->nombre.' | '.\Yii::$app->user->Identity->id,
 	        	\Yii::$app->user->Identity->GetRole(null, true),
 	        	'autos',
-	        	'crear',
+	        	'actualizar',
 	        	'exito',
-	        	\Yii::$app->fn->GetLogText ('autos', 'crear', 'exito' )
+	        	\Yii::$app->fn->GetLogText ('autos', 'actualizar', 'exito' )
         	);
         	
             return $this->redirect(['view', 'id' => $model->id]);
@@ -211,6 +219,15 @@ class AutosController extends BaseController
         					$model->save();
         				}
         				$successMsg .= "File : $filename upload success !<br/>";
+        				
+			        	Logs::Add(
+				        	\Yii::$app->user->Identity->nombre.' | '.\Yii::$app->user->Identity->id,
+				        	\Yii::$app->user->Identity->GetRole(null, true),
+				        	'autos',
+				        	'upload',
+				        	'exito',
+				        	\Yii::$app->fn->GetLogText ('autos', 'upload', 'exito' )
+			        	);
         			}
         		}
         		
@@ -252,6 +269,14 @@ class AutosController extends BaseController
     {
         $this->findModel($id)->delete();
 
+        Logs::Add(
+        		\Yii::$app->user->Identity->nombre.' | '.\Yii::$app->user->Identity->id,
+        		\Yii::$app->user->Identity->GetRole(null, true),
+        		'autos',
+        		'borrar',
+        		'exito',
+        		\Yii::$app->fn->GetLogText ('autos', 'borrar', 'exito' )
+        );
         return $this->redirect(['index']);
     }
 

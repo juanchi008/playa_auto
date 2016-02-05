@@ -149,11 +149,14 @@ class Fn extends Component {
 				],
 			],
 			'autos'	=> [
-				'crear' => [
+				'crear' => ['exito' 				=> 'Exito',],
+				'actualizar' => [
 					'exito' 				=> 'Exito',
 				],
-				'update' => [
-					'errorKey' 				=> 'Wrong cookie key',
+				'upload' => [
+					'exito' 				=> 'Exito',
+				],
+				'borrar' => [
 					'exito' 				=> 'Exito',
 				],
 			],

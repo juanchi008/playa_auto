@@ -60,11 +60,7 @@ AppAsset::register($this);
                         <ul class="sf-menu">
                             <li class="current"><a href="<?php echo Yii::$app->homeUrl; ?>site/index">Inicio</a></li>
                             <li><a href="<?php echo Yii::$app->homeUrl; ?>autos/catalogo">Catálogo</a>
-                                <ul>
-                                    <li><a href="#">Modelo</a></li>
-                                    <li><a href="#">Precio</a>
-                                    <li><a href="#">Reciente</a>
-                                </ul>
+
                             <li>
                                 <a href="<?php echo Yii::$app->homeUrl; ?>site/about">Acerca</a>
                             </li>
